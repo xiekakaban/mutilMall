@@ -1,4 +1,4 @@
-package com.statestr.mall.util;
+package com.st.mall.common.util;
 
 /**
  * Created by e604845 on 8/12/2017.

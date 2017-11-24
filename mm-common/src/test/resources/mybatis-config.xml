@@ -4,11 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias="UserEntity" type="com.st.common.entity.UserEntity"/>
+        <typeAlias alias="UserEntity" type="com.st.mall.common.entity.UserEntity"/>
     </typeAliases>
 
-    <mappers>
-        <mapper resource="com/st/common/entity/User.xml"/>
-    </mappers>
+
 
 </configuration>

@@ -1,4 +1,4 @@
-package com.st.common.test;
+package com.st.mall.common.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

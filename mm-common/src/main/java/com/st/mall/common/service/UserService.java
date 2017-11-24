@@ -1,6 +1,6 @@
-package com.st.common.service;
+package com.st.mall.common.service;
 
-import com.st.common.entity.UserEntity;
+import com.st.mall.common.entity.UserEntity;
 
 /**
  * Created by e604845 on 11/14/2017.

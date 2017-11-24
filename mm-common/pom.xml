@@ -11,12 +11,13 @@
 
     <parent>
         <groupId>com.st</groupId>
-        <artifactId>asd</artifactId>
+        <artifactId>parent</artifactId>
         <version>1.0.0.RELEASE</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
+
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -60,35 +61,43 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.38</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
         </dependency>
     </dependencies>
 
 <build>
-    <plugins>
-        <plugin>
-            <!-- The plugin rewrites your manifest -->
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-        </plugin>
-    </plugins>
+    <!-- For Junit Test-->
+    <testResources>
+        <testResource>
+            <directory>src/test/resources</directory>
+        </testResource>
+        <testResource>
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </testResource>
+    </testResources>
 
+    <!-- Resource-->
     <resources>
         <resource>
             <directory>src/main/resources</directory>
         </resource>
+
         <resource>
             <directory>src/main/java</directory>
             <includes>
                 <include>**/*.xml</include>
             </includes>
-            <filtering>false</filtering>
         </resource>
     </resources>
 </build>

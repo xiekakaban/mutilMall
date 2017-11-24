@@ -1,7 +1,9 @@
-package com.st.common.test.service;
+package com.st.mall.common.test.service;
 
-import com.st.common.service.UserService;
-import com.st.common.test.BaseOOCTest;
+import com.google.gson.Gson;
+import com.st.mall.common.entity.UserEntity;
+import com.st.mall.common.service.UserService;
+import com.st.mall.common.test.BaseOOCTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,12 +14,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 public class UserServiceOOCTest extends BaseOOCTest{
 
     @Autowired
-    @Qualifier("userService")
     private UserService userService;
 
     @Test
     public void testFindUserEntityById(){
-        userService.findUserById("");
+        UserEntity u = userService.findUserById("9999");
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(u));
     }
 
 }

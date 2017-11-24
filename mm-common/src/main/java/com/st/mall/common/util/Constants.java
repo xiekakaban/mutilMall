@@ -1,4 +1,4 @@
-package com.statestr.mall.util;
+package com.st.mall.common.util;
 
 import java.io.File;
 
