@@ -3,6 +3,7 @@ package com.st.service.user;
 import com.st.dao.base.IMapper;
 import com.st.dao.customized.user.IUserMapper;
 import com.st.model.user.User;
+import com.st.service.AbstrctSelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,19 +15,18 @@ import java.util.List;
  * @email 1215148017@qq.com
  */
 @Service
-public class UserService implements IUserService {
+public class UserService extends AbstrctSelService<User> {
 
     @Autowired
     private IUserMapper mapper;
 
-    @Override
     public User selectUserByPrimaryKey(Integer key) {
-        return mapper.selectByPrimaryKey(key);
+        return selectByPrimaryKey(key);
     }
 
     @Override
     public List<User> selectAll() {
-        return mapper.selectAll();
+        return super.selectAll();
     }
 
     @Override
