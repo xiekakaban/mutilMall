@@ -1,7 +1,7 @@
 
 What's the project?
 ======================
-    <br/>Something none know till now,but proberly will be fun!
+    <br/>Something none know till now,but probably will be fun!
 
 ##URL Test Case
 
