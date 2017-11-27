@@ -22,7 +22,7 @@ public class UserService extends AbstrctSelService<User> {
 
     public User selectUserByPrimaryKey(Integer key) {
         return selectByPrimaryKey(key);
-    }
+}
 
     @Override
     public List<User> selectAll() {

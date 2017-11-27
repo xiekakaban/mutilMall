@@ -12,5 +12,4 @@ import java.util.List;
  */
 public interface IUserMapper extends IMapper<User> {
 
-    List<User> getAll();
 }
