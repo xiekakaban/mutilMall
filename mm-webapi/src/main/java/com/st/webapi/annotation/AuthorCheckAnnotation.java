@@ -8,7 +8,7 @@ import java.lang.annotation.*;
  * @email ruantianbo@163.com
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Documented
 public @interface AuthorCheckAnnotation {
     // weather or not should process

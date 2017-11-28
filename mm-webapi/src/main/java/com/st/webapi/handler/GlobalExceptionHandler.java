@@ -16,7 +16,9 @@ import javax.naming.NoPermissionException;
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
     private final static Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
     @ExceptionHandler(value= Exception.class)
     public ModelAndView handler(Exception e, RedirectAttributes redirectAttributes){
         if(e instanceof NoPermissionException){

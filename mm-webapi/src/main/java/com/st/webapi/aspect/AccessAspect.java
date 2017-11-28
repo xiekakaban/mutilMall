@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import javax.naming.NoPermissionException;
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
 
 /**
  * @author bobo.
@@ -23,15 +24,23 @@ import javax.servlet.http.HttpServletRequest;
 public class AccessAspect extends AbstractAspect {
 
     @Before("loginCheck()")
-    public void adminLoginCheckBefore (JoinPoint joinPoint) throws NoPermissionException {
+    public void adminLoginCheckBefore(JoinPoint joinPoint) throws NoPermissionException {
 
         HttpServletRequest request = getServletRequest();
-        MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
-        AuthorCheckAnnotation adminAuthorCheckAnnotation = methodSignature.getMethod().getAnnotation(AuthorCheckAnnotation.class);
-        //需要进行权限检查
-        if(adminAuthorCheckAnnotation != null && adminAuthorCheckAnnotation.value() == Boolean.TRUE){
-            if(request.getSession().getAttribute(Constants.SESS_USER) == null){
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        Method method = methodSignature.getMethod();
+        AuthorCheckAnnotation adminAuthorCheckAnnotation = method.getAnnotation(AuthorCheckAnnotation.class);
+        //will check authorization
+        if (adminAuthorCheckAnnotation != null && adminAuthorCheckAnnotation.value()) {
+            if (request.getSession().getAttribute(Constants.SESS_USER) == null) {
                 throw new NoPermissionException();
+            }
+        } else {
+            adminAuthorCheckAnnotation = method.getDeclaringClass().getAnnotation(AuthorCheckAnnotation.class);
+            if (adminAuthorCheckAnnotation != null && adminAuthorCheckAnnotation.value()) {
+                if (request.getSession().getAttribute(Constants.SESS_USER) == null) {
+                    throw new NoPermissionException();
+                }
             }
         }
     }
