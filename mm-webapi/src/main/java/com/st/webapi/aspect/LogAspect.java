@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 
 /**
  * @author bobo.
@@ -24,16 +25,12 @@ public class LogAspect extends AbstractAspect {
     public void logBefore(JoinPoint joinPoint) {
         HttpServletRequest request = getServletRequest();
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("url: " + request.getRequestURL()).append("\t");
-        sb.append("method: " + request.getMethod()).append("\t");
-        sb.append("ip: " + request.getRemoteAddr()).append("\t");
-        //类方法
-        sb.append("class: " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName()).append("\t");
-        ;
-        //参数
-        sb.append("args: " + joinPoint.getArgs()).append("\n");
-        logger.info(sb.toString());
+        String sb = ("url: " + request.getRequestURL()) + "\t" +
+                "method: " + request.getMethod() + "\t" +
+                "ip: " + request.getRemoteAddr() + "\t" +
+                "class: " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName() + "\t" +
+                "args: " + Arrays.toString(joinPoint.getArgs()) + "\n";
+        logger.info(sb);
     }
 
 

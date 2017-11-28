@@ -17,12 +17,16 @@ import java.util.List;
 @Service
 public class UserService extends AbstrctSelService<User> {
 
+    private final IUserMapper mapper;
+
     @Autowired
-    private IUserMapper mapper;
+    public UserService(IUserMapper mapper) {
+        this.mapper = mapper;
+    }
 
     public User selectUserByPrimaryKey(Integer key) {
         return selectByPrimaryKey(key);
-}
+    }
 
     @Override
     public List<User> selectAll() {

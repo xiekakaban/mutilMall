@@ -20,8 +20,12 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping("/{userID}")
     public User selectOne(@PathVariable("userID") Integer userID) {
@@ -34,7 +38,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login(){
+    public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }

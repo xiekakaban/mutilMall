@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SpringBootApplication
 @ComponentScan("com.st")
 @MapperScan(basePackages = "com.st.dao.customized")
+@PropertySource(ignoreResourceNotFound = true, value = "classpath:application-dao.properties")
 public class Application extends WebMvcConfigurerAdapter implements CommandLineRunner {
     private Logger logger = LoggerFactory.getLogger(Application.class);
 

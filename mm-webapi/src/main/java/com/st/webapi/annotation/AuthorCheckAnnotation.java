@@ -3,12 +3,14 @@ package com.st.webapi.annotation;
 import java.lang.annotation.*;
 
 /**
- * Created by tianbo on 11/27/2017.
+ * @author bobo.
+ * @date 11/27/2017
+ * @email ruantianbo@163.com
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 @Documented
 public @interface AuthorCheckAnnotation {
-    // 是否进行权限检查
+    // weather or not should process
     boolean value() default false;
 }
