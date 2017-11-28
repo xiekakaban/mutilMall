@@ -28,13 +28,13 @@ public class GlobalExceptionHandler {
         }
     }
     private ModelAndView  noPermissionExceptionHandler(Exception e,RedirectAttributes redirectAttributes){
-        ModelAndView modelAndView = new ModelAndView("redirect:/login");
+        ModelAndView modelAndView = new ModelAndView("redirect:/user/login");
         redirectAttributes.addFlashAttribute("loginCheck", "You need Login First.");
         return modelAndView;
     }
 
     private ModelAndView commonExceptionHandler(Exception e){
-        ModelAndView modelAndView = new ModelAndView("redirect:/login");
+        ModelAndView modelAndView = new ModelAndView("redirect:/user/login");
         return modelAndView;
     }
 }

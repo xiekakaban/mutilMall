@@ -12,5 +12,5 @@ import java.lang.annotation.*;
 @Documented
 public @interface AuthorCheckAnnotation {
     // weather or not should process
-    boolean value() default false;
+    boolean value() default true;
 }

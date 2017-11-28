@@ -1,4 +1,454 @@
+/**Common Css*/
+.pull-right{
+    float:right !important;
+}
+.redColor{
+    color:#C40000 !important;
+}
+.inline-block{
+    display: inline-block;
+}
+.mt20{
+    margin-top: 20px;
+}
+
 *{
     margin: 0px;
-    padding: 0px;
+    padding:0px;
+}
+body{
+    font-size: 12px;
+    font-family: Arial;
+    margin: 0px;
+    padding:0px;
+}
+a{
+
+}
+a:hover{
+    text-decoration: none;
+    color:#C40000;
+}
+
+/** topBanner */
+
+nav.topBanner a {
+    color : #999;
+    margin:0px 5px 0px 5px;
+}
+nav.topBanner span.glyphicon{
+    margin:0px 2px 0px 2px;
+}
+nav.topBanner a:hover{
+    color: #C40000;
+    text-decoration: none;
+}
+nav.topBanner{
+    background-color:#f2f2f2;
+    border-bottom: 1px solid #e2e2e2;
+    padding:5px 20px 5px 20px;
+
+}
+nav.topBanner>a.icon{
+    margin:0px 5px 0 5px;
+}
+nav.topBanner span.userName{
+    color : #999;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+/**Search */
+
+#searchWrapper{
+    margin:10px auto 0px auto;
+    text-align:center;
+}
+#searchWrapper a{
+    color:#999;
+}
+#searchWrapper #searchInputDiv {
+    width:400px;
+    margin-left:100px;
+}
+#searchInputDiv .searchKeywordDiv{
+    background-color: #C40000;
+    height:40px;
+    padding:2px;
+}
+#searchInputDiv input.searchKeyword{
+    width:275px;
+    height:36px;
+    outline: none;
+    border:2px solid transparent;
+}
+
+#searchInputDiv button.searchBtn{
+    width:110px;
+    background-color:#C40000;
+    outline: none;
+    border: 2px solid transparent;
+    height:36px;
+    color:#fff;
+    font-size:12px;
+    font-weight: bold;
+}
+
+#searchInputDiv .searchBelow {
+    margin-top: 5px;
+    color:#999;
+}
+.searchBelow ul.searchShortcut {
+    list-style-type :none;
+}
+.searchBelow ul.searchShortcut li{
+    float: left;
+    padding-right:10px;
+    border-right:1px solid #999;
+}
+.searchBelow ul.searchShortcut li:nth-child(n+1){
+    margin-left:10px;
+}
+
+/**footer*/
+#footer_desc{
+    text-align: center;
+    padding:25px 0px 25px 0px;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+#dlWrapper{
+    margin: 0px auto;
+    width:1024px;
+    margin: 20px auto 0px auto;
+
+
+}
+#dlWrapper dl{
+    display: inline-block;
+    margin: 0px 50px 0px 50px;
+}
+#dlWrapper dt{
+    font-size:16px;
+    color:#646464;
+}
+#dlWrapper dd{
+    color:#999;
+    padding:1px 0px 1px 0px;
+}
+#copyright{
+    background-color: #000000;
+    border-top:2px solid #C40000;
+    margin:20px 0px 0px 0px;
+    padding-bottom: 10px;
+}
+.copyrightMiddle{
+    width:1024px;
+    margin: 5px auto 0px auto;
+    position:relative;
+}
+.copyrightMiddle .link{
+    color:#ffffff;
+}
+.copyrightMiddle .notlink{
+    color:#a4a4a4;
+}
+#innerLink{
+    margin-top:10px;
+}
+#innerLink span{
+    margin: 0px 5px 0px 5px;
+}
+#innerLink span:nth-child(1){
+    margin-left: 0px;
+}
+#fridenLink{
+    margin-top: 5px;
+}
+#fridenLink span{
+    margin: 0px 3px 0px 3px;
+}
+#fridenLink span:nth-child(1){
+    margin-left: 0px;
+}
+#license{
+    margin-top: 10px;
+}
+#cateye{
+    margin-left: 20px;
+    display: block;
+    position: absolute;
+    top: -43px;
+    left: -15px;
+}
+/**index*/
+#categoryBanner{
+    background-color: #DD2727;
+}
+#categoryBanner #bannerItems{
+    width:1024px;
+    margin: 0px auto;
+    color: #ffffff;
+    font-size:16px;
+}
+#categoryBanner #bannerItems .head{
+    width:200px;
+    text-align:center;
+    padding:5px 0px 5px 0px;
+    background-color: #C60A0A;
+}
+#categoryBanner #bannerItems .head span.glyphicon{
+    position: relative;
+    top:2px;
+    left:-2px;
+}
+#categoryBanner #bannerItems .rightMenu>span{
+    display:inline-block;
+    padding:5px 10px 5px 10px;
+}
+#categoryBanner #bannerItems .rightMenu span.glyphicon{
+    position: relative;
+    top:2px;
+    left:-2px;
+}
+#homeProducts{
+    background-color: #e8e8e8;
+    position: relative;
+}
+#productWrapper{
+    width: 1024px;
+    margin: 0px auto;
+    padding-bottom:48px;
+
+}
+#productItems{
+    position: absolute;
+    z-index: 1;
+}
+#productItems>a.productItem{
+    display: block;
+    width: 200px;
+    font-size: 16px;
+    cursor: pointer;
+    color:#333;
+    padding:5px 0px;
+    background-color: rgb(226,226,227);
+}
+#productItems .productsAsideCategorys{
+    display: none;
+    position: absolute;
+    height: 549px;
+    background-color: #fff;
+    width:830px;
+    left:200px;
+    top:0px;
+}
+#productItems>a.productItem:hover{
+    background-color: #fff;
+    text-decoration: none;
+    color:#C40000;
+}
+#productItems>a.productItem>span.itemName{
+    padding-left: 25px;
+}
+#productItems>a.productItem>span.glyphicon{
+    position: relative;
+    top: 5px;
+    left: 7px;
+}
+#hotProducts{
+    position: relative;
+    left:-100px;
+}
+#hotProducts>a.hotProductItem.active{
+    display: block;
+}
+#hotProducts>a.hotProductItem.unactive{
+    display: none;
+}
+
+#productItemsDisplay{
+    position: absolute;
+
+}
+.hotProductsRowWrapper{
+    border-bottom: 1px dashed #e7e7e7;
+    padding:10px 20px 10px 50px;
+}
+.hotProductsRowWrapper>span.hotRow{
+    color:#999;
+    font-size:14px;
+    padding-right: 8px;
+    padding-left:8px;
+}
+.hotProductsRowWrapper>span.hotRow.hotSale{
+    color:#C40000;
+}
+
+#suggestProducts{
+    margin:10px auto 0px auto;
+    width: 1024px;
+    background-color: #e8e8e8;
+    padding:20px 10px 10px 10px;
+}
+#suggestProducts span.categoryTitle{
+    display: block;
+    padding-left: 15px;
+    font-size: 16px;
+    border-left: 5px solid #19C8A9;
+}
+ul.suggestProduct{
+    display: block;
+    margin-top: 10px;
+}
+ul.suggestProduct li{
+    list-style-type:none;
+    display: inline-block;
+    margin: 8px 10px;
+    background-color: #fff;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border:1px solid transparent;
+    text-align: center;
+    cursor: pointer;
+    width:227px;
+}
+ul.suggestProduct li:hover{
+    border: 1px solid #C40000;
+}
+ul.suggestProduct li>img.prodImg{
+    width: 187px;
+    height: 190px;
+}
+
+span.suggestProductName{
+    display: block;
+    padding:16px;
+    color:#666666;
+    height:60px;
+}
+span.suggestProductPrice{
+    display: block;
+    color: #FF003A;
+    font-size: 16px;
+    padding-left: 16px;
+}
+
+/**Login*/
+#login{
+    width:1024px;
+    margin:0px auto;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+#loginBackground{
+    top:30px;
+    position: relative;
+}
+#loginRegisterPanel,#loginPanel,#registerPanel{
+    width:350px;
+    height: 400px;
+}
+#loginRegisterPanel{
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    position: absolute;
+    top: 200px;
+    right: 330px;
+}
+#loginRegisterFlipper{
+    position: relative;
+    transform-style:preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+#loginPanel,#registerPanel{
+    position: absolute;
+    padding:60px 25px 80px 25px;
+    background-color: #fff;
+    backface-visibility: hidden;
+    transform-style:preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    top: 0;
+    left: 0;
+}
+#registerPanel{
+    padding:30px 25px 80px 25px;
+}
+#loginPanel span.loginTitle,#registerPanel span.registerTitle{
+    font-size: 16px;
+    font-weight: bold;
+}
+.inputUserName,.inputPwd,.inputRePwd,.inputEmail{
+    margin-top: 15px;
+}
+.loginInfo,.registerInfo{
+    margin-top: 10px;
+    margin-top:20px;
+}
+.loginButton,.registerButton{
+    display: block;
+    width: 290px;
+    margin:0px auto;
+    color:#fff;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    background-color: #C40000;
+    user-select:none;
+    border: 1px solid transparent;
+    padding:6px 12px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius:4px;
+}
+span.freeForRegister,span.forLogin{
+    float:right;
+}
+span.forgetPwd>a,span.freeForRegister>a,span.forLogin>a{
+    color:#999;
+}
+
+#loginRegisterFlipper.register{
+    animation: registerActive 1s;
+    -webkit-animation: registerActive 1s;
+    -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+    animation-fill-mode: forwards;
+}
+#loginRegisterFlipper.login{
+    animation: loginActive 1s;
+    -webkit-animation: loginActive 1s;
+    -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+    animation-fill-mode: forwards;
+}
+#registerPanel{
+    transform:rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+
+}
+#loginPanel{
+    transform:rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    z-index: 2;
+}
+
+@keyframes loginActive {
+    0%{
+        transform:rotateY(-180deg);
+        -webkit-transform: rotateY(-180deg);
+    }
+    100%{
+        transform:rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+    }
+}
+@keyframes registerActive {
+    0%{
+        transform:rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+    }
+    100%{
+        transform:rotateY(-180deg);
+        -webkit-transform: rotateY(-180deg);
+    }
 }

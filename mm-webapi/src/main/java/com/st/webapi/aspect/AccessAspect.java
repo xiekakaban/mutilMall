@@ -2,6 +2,7 @@ package com.st.webapi.aspect;
 
 import com.st.webapi.annotation.AuthorCheckAnnotation;
 import com.st.webapi.aspect.AbstractAspect;
+import com.st.webapi.exception.NoPermissionException;
 import com.st.webapi.util.Constants;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,7 +11,6 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import javax.naming.NoPermissionException;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 
