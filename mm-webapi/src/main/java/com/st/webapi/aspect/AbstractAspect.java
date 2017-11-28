@@ -13,16 +13,24 @@ import javax.servlet.http.HttpServletRequest;
  */
 public abstract class AbstractAspect {
 
-    /** record every user visit */
+    /**
+     * record every user visit
+     */
     @Pointcut("execution(public * com.st.webapi.controller.*.*(..))")
-    public void accessLog(){}
+    public void accessLog() {
+    }
 
-    /**User Login check*/
+    /**
+     * User Login check
+     */
     @Pointcut("execution(public * com.st.webapi.controller.*.*(..)) && @annotation(com.st.webapi.annotation.AuthorCheckAnnotation)")
-    public void loginCheck(){}
+    public void loginCheck() {
+    }
 
-    /**Get Request*/
-    protected HttpServletRequest getServletRequest(){
+    /**
+     * Get Request
+     */
+    protected HttpServletRequest getServletRequest() {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         return request;

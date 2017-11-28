@@ -2,6 +2,7 @@ package com.st.webapi.controller;
 
 import com.st.model.user.User;
 import com.st.service.user.UserService;
+import com.st.webapi.annotation.AuthorCheckAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,8 +43,6 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }
-
-
 
 
 }
