@@ -14,11 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class IndexController {
 
-
     @GetMapping("/")
-    @AuthorCheckAnnotation
-    public ModelAndView login() {
+    public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("index");
+        return modelAndView;
+    }
+    @GetMapping("/version")
+    @AuthorCheckAnnotation
+    public ModelAndView version(){
+        ModelAndView modelAndView = new ModelAndView("version");
         return modelAndView;
     }
 }

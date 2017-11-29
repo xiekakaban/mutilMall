@@ -3,13 +3,14 @@ package com.st.webapi.controller;
 import com.st.model.user.User;
 import com.st.service.user.UserService;
 import com.st.webapi.annotation.AuthorCheckAnnotation;
+import com.st.webapi.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -38,11 +39,32 @@ public class UserController {
         return userService.selectAll();
     }
 
-    @GetMapping("/login")
-    public ModelAndView login() {
+    @RequestMapping(value = "/login",method = {RequestMethod.GET,RequestMethod.POST})
+    public ModelAndView login(String username, String password, HttpServletRequest request, HttpSession httpSession,RedirectAttributes redirectAttributes) {
+        if(request.getMethod().equalsIgnoreCase("POST")){
+            User u = userService.checkLogin(username,password);
+            if(u!=null){
+                u.setPwd("Eccrypt");
+                httpSession.setAttribute(Constants.SESS_USER,u);
+                return new ModelAndView("index");
+            }else{
+                redirectAttributes.addFlashAttribute("Please check username/password");
+                return new ModelAndView("redirect:/user/login");
+            }
+        }
         ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }
+
+    @GetMapping("/logout")
+    public ModelAndView adminLogout(HttpSession session){
+        session.removeAttribute(Constants.SESS_USER);
+        return new ModelAndView("redirect:/user/login/");
+    }
+
+
+
+
 
 
 }

@@ -37,4 +37,12 @@ public class UserService extends AbstrctSelService<User> {
     public IMapper<User> getIMapper() {
         return mapper;
     }
+
+    public User checkLogin(String username,String pwd){
+        User u = new User();
+        u.setUsername(username);
+        u.setPwd(pwd);
+        return mapper.selectOne(u);
+    }
+
 }

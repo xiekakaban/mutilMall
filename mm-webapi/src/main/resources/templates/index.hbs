@@ -1,11 +1,333 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-    <link href="/static/css/default.css">
+    <meta charset="utf-8">
+    <title>文档标题</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/default.css">
 </head>
 <body>
-<h1 align="center">Index Page</h1>
+
+
+{{> fragment/topBanner}}
+{{> fragment/search}}
+<!--<div th:replace="../common/topBanner :: .topBanner"></div>-->
+<!--<div th:replace="../common/search :: #searchWrapper"></div>-->
+<div style="margin-top: 50px;"></div>
+<div id="content">
+    <div id="categoryCarousel">
+        <div id="categoryBanner">
+            <div id="bannerItems">
+                <div class="head inline-block" ><span class="glyphicon glyphicon-th-list"></span> 商品分类</div>
+                <div class="rightMenu inline-block">
+                    <span><span class="glyphicon glyphicon-shopping-cart"></span>天猫超市</span>
+                    <span><span class="glyphicon glyphicon-plane"></span>天猫国际</span>
+                    <span>平板电脑</span>
+                    <span>沙发</span>
+                    <span>马桶</span>
+                    <span>电热水器</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="homeProducts">
+        <div id="productWrapper">
+            <div id="productItems">
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">平板电脑</span></a>
+                <div class="productsAsideCategorys">
+                    <div class="hotProductsRowWrapper">
+                        <span class="hotRow">屏大影院</span>
+                        <span class="hotRow">周末</span>
+                        <span class="hotRow">新品特惠</span>
+                        <span class="hotRow">32吋电视机</span>
+                        <span class="hotRow" class="hotRow">智能网络</span>
+                    </div>
+                    <div class="hotProductsRowWrapper">
+                        <span class="hotRow hotSale">USB高清</span>
+                        <span class="hotRow">芒果TV在线</span>
+                        <span class="hotRow">TCL品牌日</span>
+                        <span class="hotRow hotSale">三星屏幕</span>
+                        <span class="hotRow">4k超清</span>
+                        <span class="hotRow">USB高清</span>
+                        <span class="hotRow">芒果TV在线</span>
+                        <span class="hotRow">10核机芯</span>
+                        <span class="hotRow">4K机皇</span>
+                        <span class="hotRow">4k超清</span>
+                    </div>
+                    <div class="hotProductsRowWrapper">
+                        <span class="hotRow hotSale">V字黑釉底座</span>
+                        <span class="hotRow">周末</span>
+                        <span class="hotRow">新品特惠</span>
+                        <span class="hotRow">YUNOS</span>
+                        <span class="hotRow">智能网络</span>
+                    </div>
+                    <div class="hotProductsRowWrapper">
+                        <span class="hotRow">领100元券</span>
+                        <span class="hotRow hotSale">金色外观</span>
+                        <span class="hotRow">海量影视</span>
+                        <span class="hotRow hotSale">客厅爆款</span>
+                        <span class="hotRow">微信电视</span>
+                    </div>
+                    <div class="hotProductsRowWrapper">
+                        <span class="hotRow hotSale">USB高清</span>
+                        <span class="hotRow">芒果TV在线</span>
+                        <span class="hotRow">TCL品牌日</span>
+                        <span class="hotRow hotSale">三星屏幕</span>
+                        <span class="hotRow">芒果TV在线</span>
+                        <span class="hotRow">USB高清</span>
+                        <span class="hotRow">64位处理器</span>
+                        <span class="hotRow">4k超清</span>
+                    </div>
+                    <div class="hotProductsRowWrapper">
+                        <span class="hotRow">64位处理器</span>
+                        <span class="hotRow">周末</span>
+                        <span class="hotRow">金色外观</span>
+                        <span class="hotRow hotSale">客厅爆款</span>
+                        <span class="hotRow">微信电视</span>
+                    </div>
+                    <div class="hotProductsRowWrapper">
+                        <span class="hotRow">65吋 TCL</span>
+                        <span class="hotRow hotSale">YUNOS</span>
+                        <span class="hotRow">金色外观</span>
+                        <span class="hotRow hotSale">领100元券</span>
+                        <span class="hotRow">微信电视</span>
+                    </div>
+                    <div class="hotProductsRowWrapper">
+                        <span class="hotRow">人气爆款</span>
+                        <span class="hotRow hotSale">周末</span>
+                        <span class="hotRow">金色外观</span>
+                        <span class="hotRow hotSale">三星屏幕</span>
+                        <span class="hotRow">微信电视</span>
+                    </div>
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">马桶</span></a>
+                <div class="productsAsideCategorys">
+                    马桶
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">沙发</span></a>
+                <div class="productsAsideCategorys">
+                    沙发
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">电热水器</span></a>
+                <div class="productsAsideCategorys">
+                    电热水器
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">平衡车</span></a>
+                <div class="productsAsideCategorys">
+                    平衡车
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">扫地机器人</span></a>
+                <div class="productsAsideCategorys">
+                    扫地机器人
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">原汁机</span></a>
+                <div class="productsAsideCategorys">
+                    原汁机
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">冰箱</span></a>
+                <div class="productsAsideCategorys">
+                    冰箱
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">空调</span></a>
+                <div class="productsAsideCategorys">
+                    空调
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">女表</span></a>
+                <div class="productsAsideCategorys">
+                    马桶
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">男表</span></a>
+                <div class="productsAsideCategorys">
+                    男表
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">男士手拿包</span></a>
+                <div class="productsAsideCategorys">
+                    男士手拿包
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">男士西装</span></a>
+                <div class="productsAsideCategorys">
+                    男士西装
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">时尚男鞋</span></a>
+                <div class="productsAsideCategorys">
+                    时尚男鞋
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">品牌女装</span></a>
+                <div class="productsAsideCategorys">
+                    品牌女装
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">太阳镜</span></a>
+                <div class="productsAsideCategorys">
+                    太阳镜
+                </div>
+                <a href="#" class="productItem"><span class="glyphicon glyphicon-tag item"></span><span class="itemName">安全座椅</span></a>
+                <div class="productsAsideCategorys">
+                    安全座椅
+                </div>
+            </div>
+            <div id="hotProducts">
+                <!-- a[href="#"].hotProductItem>div.hotProductItemWrapper>img[src="../statics/images/"]*4 -->
+                <a href="#" class="hotProductItem active">
+                    <div class="hotProductItemWrapper"><img src="/images/hot1.jpg" alt=""></div>
+                </a>
+                <a href="#" class="hotProductItem unactive">
+                    <div class="hotProductItemWrapper"><img src="/images/hot2.jpg" alt=""></div>
+                </a>
+                <a href="#" class="hotProductItem unactive">
+                    <div class="hotProductItemWrapper"><img src="images/hot3.jpg" alt=""></div>
+                </a>
+                <a href="#" class="hotProductItem unactive">
+                    <div class="hotProductItemWrapper"><img src="images/hot4.jpg" alt=""></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="suggestProducts">
+        <div class="categoryItem">
+            <span class="categoryTitle">平板电脑</span>
+            <ul class="suggestProduct">
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/632.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">1874.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/654.jpg" alt="">
+                    <span class="suggestProductName">[热销]普屏PANDA/熊猫LD39</span>
+                    <span class="suggestProductPrice">1874.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/4598.jpg" alt="">
+                    <span class="suggestProductName">[热销]MAXFEEL休闲男士手包真皮手拿包大容</span>
+                    <span class="suggestProductPrice">799.2</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/5222.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">1874.25</span>
+                </li>
+            </ul>
+        </div>
+        <div class="categoryItem">
+            <span class="categoryTitle">平板电脑</span>
+            <ul class="suggestProduct">
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/6442.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">159.3</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/6453.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">86</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/676.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">8786</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/654.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">789.25</span>
+                </li>
+            </ul>
+        </div>
+        <div class="categoryItem">
+            <span class="categoryTitle">平板电脑</span>
+            <ul class="suggestProduct">
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/632.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">86.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/3752.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">78.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/4390.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">4478.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/7036.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">12344.25</span>
+                </li>
+            </ul>
+        </div>
+        <div class="categoryItem">
+            <span class="categoryTitle">平板电脑</span>
+            <ul class="suggestProduct">
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/6442.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">123.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/7663.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">58.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/7014.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">87.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/643.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">1874.25</span>
+                </li>
+            </ul>
+        </div>
+        <div class="categoryItem">
+            <span class="categoryTitle">平板电脑</span>
+            <ul class="suggestProduct">
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/6453.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">1874.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/654.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">1874.25</span>
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="images/6442.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">1874.25</span>s
+                </li>
+                <li class="suggestProductDetail">
+                    <img class="prodImg" src="/images/7036.jpg" alt="">
+                    <span class="suggestProductName">[热销]夏普屏PANDA/熊猫LD39D71S</span>
+                    <span class="suggestProductPrice">1874.25</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+{{> fragment/footer}}
+<script>
+    $("#productItems a.productItem").on("mouseenter",function(){
+        clearProductsAsideCategorys();
+        $(this).next("div.productsAsideCategorys").css("display","block")
+        console.log($(this).attr("class")+"mouseenter");
+    });
+    $("#productItems").on("mouseleave",function(){
+        clearProductsAsideCategorys();
+        console.log($(this).attr("class")+"，productItems mouseleave");
+    });
+    function clearProductsAsideCategorys(){
+        $("#productItems .productsAsideCategorys").css("display","none");
+    }
+</script>
 </body>
 </html>
