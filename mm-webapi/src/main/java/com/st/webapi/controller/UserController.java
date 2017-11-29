@@ -46,7 +46,7 @@ public class UserController {
             if(u!=null){
                 u.setPwd("Eccrypt");
                 httpSession.setAttribute(Constants.SESS_USER,u);
-                return new ModelAndView("index");
+                return new ModelAndView("redirect:/");
             }else{
                 redirectAttributes.addFlashAttribute("Please check username/password");
                 return new ModelAndView("redirect:/user/login");
