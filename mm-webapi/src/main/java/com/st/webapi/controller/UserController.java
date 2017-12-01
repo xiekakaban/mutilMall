@@ -4,13 +4,18 @@ import com.st.model.user.User;
 import com.st.service.user.UserService;
 import com.st.webapi.annotation.AuthorCheckAnnotation;
 import com.st.webapi.util.Constants;
+import org.apache.ibatis.io.Resources;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import tk.mybatis.mapper.util.StringUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -39,8 +44,61 @@ public class UserController {
         return userService.selectAll();
     }
 
+
+    @PostMapping("/regiester")
+    public ModelAndView register(@Valid User u,BindingResult bindingResult,RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()){
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("Please check your input:");
+            for(FieldError fieldError : bindingResult.getFieldErrors()){
+                sb.append(fieldError.getField()).append(",");
+            }
+            redirectAttributes.addAttribute("info",sb.subSequence(0,sb.length()-2));
+            return new ModelAndView("redirect:/user/login?isRegiester=true");
+        }
+//        else{
+//            User uTemp = new User();
+//            uTemp.setUsername(u.getUsername());
+//            Boolean flag = Boolean.TRUE;
+//            StringBuilder stringBuilder = new StringBuilder();
+//            if(userService.selectCount(uTemp) != 0){
+//                redirectAttributes.addAttribute("info",u.getUsername()+" is Already ");
+//                flag = Boolean.FALSE;
+//            }
+
+
+        return new ModelAndView("redirect:/");
+    }
+//    private RegisterCheckResult checkRegister(User u){
+//        RegisterCheckResult result = new RegisterCheckResult();
+//
+//        User uTemp = new User();
+//        uTemp.setUsername(u.getUsername());
+//        StringBuilder stringBuilder = new StringBuilder();
+//        if(userService.selectCount(uTemp) != 0){
+//            stringBuilder.append(u.getUsername()+" ");
+//            result.flag = Boolean.FALSE;
+//        }
+//        uTemp = new User();
+//        uTemp.setUsername(u.getEmail())
+//        if(userService.selectCount(uTemp) != 0){
+//            stringBuilder.append(u.getUsername()+" ");
+//            result.flag = Boolean.FALSE;
+//        }
+//
+//
+//
+//
+//    }
+    private class RegisterCheckResult{
+        public String info;
+        public Boolean flag = Boolean.TRUE;
+    }
+
+
     @RequestMapping(value = "/login",method = {RequestMethod.GET,RequestMethod.POST})
-    public ModelAndView login(String username, String password, HttpServletRequest request, HttpSession httpSession,RedirectAttributes redirectAttributes) {
+    public ModelAndView login(String username, String password, String info,@RequestParam(defaultValue = "false") boolean isRegiester,HttpServletRequest request, HttpSession httpSession,RedirectAttributes redirectAttributes) {
         if(request.getMethod().equalsIgnoreCase("POST")){
             User u = userService.checkLogin(username,password);
             if(u!=null){
@@ -48,11 +106,14 @@ public class UserController {
                 httpSession.setAttribute(Constants.SESS_USER,u);
                 return new ModelAndView("redirect:/");
             }else{
-                redirectAttributes.addFlashAttribute("Please check username/password");
-                return new ModelAndView("redirect:/user/login");
+                ModelAndView modelAndView = new ModelAndView("login");
+                modelAndView.addObject("info","Please check username/password");
+                return modelAndView;
             }
         }
         ModelAndView modelAndView = new ModelAndView("login");
+        modelAndView.addObject("info",info);
+        modelAndView.addObject("isRegiester",isRegiester);
         return modelAndView;
     }
 
@@ -61,10 +122,4 @@ public class UserController {
         session.removeAttribute(Constants.SESS_USER);
         return new ModelAndView("redirect:/user/login/");
     }
-
-
-
-
-
-
 }

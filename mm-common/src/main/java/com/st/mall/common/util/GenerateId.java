@@ -1,4 +1,4 @@
-package com.st.webapi.util;
+package com.st.mall.common.util;
 
 import java.util.UUID;
 

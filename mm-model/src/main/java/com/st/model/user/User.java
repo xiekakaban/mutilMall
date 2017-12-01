@@ -1,8 +1,11 @@
 package com.st.model.user;
 
 import com.st.model.Domain;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -17,9 +20,15 @@ public class User extends Domain {
     @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotNull
+    @Size(min=6,max=20)
     private String username;
+
+    @NotNull
+    @Size(min=6,max=20)
     private String pwd;
     private String avatar;
+    @Email
     private String email;
     private String phone;
     private String location;

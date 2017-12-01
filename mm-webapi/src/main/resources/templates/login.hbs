@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="/css/default.css">
 </head>
 <body>
+{{#info}}
+<div class="alert alert-danger" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>{{info}}</strong>
+</div>
+{{/info}}
 <div id="login">
     <img src="/images/simpleLogo.png" alt="">
     <img src="/images/loginbackground.png" alt="" id="loginBackground">
@@ -16,7 +22,7 @@
     <div id="loginRegisterPanel">
         <div id="loginRegisterFlipper">
             <div id="registerPanel">
-                <form action="" method="post">
+                <form action="/user/regiester" method="post">
                     <span class="registerTitle ">用户注册</span>
                     <div class="inputUserName input-group">
 								<span class="input-group-addon" id="basic-username">
@@ -34,7 +40,7 @@
 								<span class="input-group-addon" id="basic-pwd">
 									<span class="glyphicon glyphicon-lock"></span>
 								</span>
-                        <input type="password" name="password" placeholder="密码，6-20位" class="form-control" aria-describedby="basic-pwd">
+                        <input type="password" name="pwd" placeholder="密码，6-20位" class="form-control" aria-describedby="basic-pwd">
                     </div>
                     <div class="inputRePwd input-group">
 								<span class="input-group-addon" id="basic-repwd">
@@ -47,7 +53,7 @@
                     <div class="loginOperation">
                         <span class="forgetPwd"><a href="#">忘记密码</a></span>
                         <span class="forLogin"><a href="#" onclick="toggleLogin()" style="cursor: pointer">登陆</a></span>
-                        <Button type="submit" class="registerButton">注册</Button>
+                        <Button type="submit" class="registerButton" >注册</Button>
                     </div>
                 </form>
             </div>
@@ -83,6 +89,11 @@
 {{> fragment/footer}}
 </body>
 <script>
+    $(document).ready(function(){
+        if({{isRegiester}}==true){
+            toggleRegister();
+        }
+    });
     function toggleRegister(){
         $loginRegisterFlipper = $("#loginRegisterFlipper");
         $loginRegisterFlipper.removeClass("login");

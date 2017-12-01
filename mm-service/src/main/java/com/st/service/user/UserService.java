@@ -2,6 +2,7 @@ package com.st.service.user;
 
 import com.st.dao.base.IMapper;
 import com.st.dao.customized.user.IUserMapper;
+import com.st.mall.common.util.SecurityUtil;
 import com.st.model.user.User;
 import com.st.service.AbstrctSelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class UserService extends AbstrctSelService<User> {
     public User checkLogin(String username,String pwd){
         User u = new User();
         u.setUsername(username);
-        u.setPwd(pwd);
+        u.setPwd(SecurityUtil.eccryptMD5(pwd));
         return mapper.selectOne(u);
     }
 
