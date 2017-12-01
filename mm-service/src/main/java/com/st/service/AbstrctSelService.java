@@ -1,5 +1,6 @@
 package com.st.service;
 
+import com.st.dao.base.IMapper;
 import com.st.dao.base.ISelectedMapper;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.util.CollectionUtils;
@@ -19,7 +20,7 @@ public abstract class AbstrctSelService<T> {
     private final Object tClassLock = new Object();
     private Class<?> tClass;
 
-    public abstract ISelectedMapper<T> getIMapper();
+    public abstract IMapper<T> getIMapper();
 
     public T selectOne(T record) {
         List<T> list = selectByRowBounds(record, new RowBounds(0, 1));
@@ -81,7 +82,9 @@ public abstract class AbstrctSelService<T> {
         List<T> list = selectByExampleAndRowBounds(example, new RowBounds(0, 1));
         return CollectionUtils.isEmpty(list) ? null : list.get(0);
     }
-
+    public int insert(T entity){
+        return getIMapper().insert(entity);
+    }
     public Example example() {
         return new Example(getGenericInterfaces());
     }

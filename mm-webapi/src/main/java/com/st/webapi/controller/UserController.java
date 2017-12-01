@@ -48,7 +48,6 @@ public class UserController {
     @PostMapping("/regiester")
     public ModelAndView register(@Valid User u,BindingResult bindingResult,RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
-
             StringBuilder sb = new StringBuilder();
             sb.append("Please check your input:");
             for(FieldError fieldError : bindingResult.getFieldErrors()){
@@ -57,40 +56,12 @@ public class UserController {
             redirectAttributes.addAttribute("info",sb.subSequence(0,sb.length()-2));
             return new ModelAndView("redirect:/user/login?isRegiester=true");
         }
-//        else{
-//            User uTemp = new User();
-//            uTemp.setUsername(u.getUsername());
-//            Boolean flag = Boolean.TRUE;
-//            StringBuilder stringBuilder = new StringBuilder();
-//            if(userService.selectCount(uTemp) != 0){
-//                redirectAttributes.addAttribute("info",u.getUsername()+" is Already ");
-//                flag = Boolean.FALSE;
-//            }
+        else{
+            userService.insert(u);
+            return new ModelAndView("redirect:/");
+        }
 
-
-        return new ModelAndView("redirect:/");
     }
-//    private RegisterCheckResult checkRegister(User u){
-//        RegisterCheckResult result = new RegisterCheckResult();
-//
-//        User uTemp = new User();
-//        uTemp.setUsername(u.getUsername());
-//        StringBuilder stringBuilder = new StringBuilder();
-//        if(userService.selectCount(uTemp) != 0){
-//            stringBuilder.append(u.getUsername()+" ");
-//            result.flag = Boolean.FALSE;
-//        }
-//        uTemp = new User();
-//        uTemp.setUsername(u.getEmail())
-//        if(userService.selectCount(uTemp) != 0){
-//            stringBuilder.append(u.getUsername()+" ");
-//            result.flag = Boolean.FALSE;
-//        }
-//
-//
-//
-//
-//    }
     private class RegisterCheckResult{
         public String info;
         public Boolean flag = Boolean.TRUE;

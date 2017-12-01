@@ -27,6 +27,9 @@ public abstract class AbstractAspect {
     public void loginCheck() {
     }
 
+    @Pointcut("execution(public * org.mybatis.spring.SqlSessionTemplate.insert(..))")
+    public void doInsert(){};
+
     /**
      * Get Request
      */
