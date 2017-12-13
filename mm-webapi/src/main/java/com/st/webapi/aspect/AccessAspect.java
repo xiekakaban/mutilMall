@@ -23,25 +23,27 @@ import java.lang.reflect.Method;
 @Aspect
 public class AccessAspect extends AbstractAspect {
 
-    @Before("loginCheck()")
-    public void adminLoginCheckBefore(JoinPoint joinPoint) throws NoPermissionException {
 
-        HttpServletRequest request = getServletRequest();
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        Method method = methodSignature.getMethod();
-        AuthorCheckAnnotation adminAuthorCheckAnnotation = method.getAnnotation(AuthorCheckAnnotation.class);
-        //will check authorization
-        if (adminAuthorCheckAnnotation != null && adminAuthorCheckAnnotation.value()) {
-            if (request.getSession().getAttribute(Constants.SESS_USER) == null) {
-                throw new NoPermissionException();
-            }
-        } else {
-            adminAuthorCheckAnnotation = method.getDeclaringClass().getAnnotation(AuthorCheckAnnotation.class);
-            if (adminAuthorCheckAnnotation != null && adminAuthorCheckAnnotation.value()) {
-                if (request.getSession().getAttribute(Constants.SESS_USER) == null) {
-                    throw new NoPermissionException();
-                }
-            }
-        }
-    }
+
+//    @Before("loginCheck()")
+//    public void adminLoginCheckBefore(JoinPoint joinPoint) throws NoPermissionException {
+//
+//        HttpServletRequest request = getServletRequest();
+//        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+//        Method method = methodSignature.getMethod();
+//        AuthorCheckAnnotation adminAuthorCheckAnnotation = method.getAnnotation(AuthorCheckAnnotation.class);
+//        //will check authorization
+//        if (adminAuthorCheckAnnotation != null && adminAuthorCheckAnnotation.value()) {
+//            if (request.getSession().getAttribute(Constants.SESS_USER) == null) {
+//                throw new NoPermissionException();
+//            }
+//        } else {
+//            adminAuthorCheckAnnotation = method.getDeclaringClass().getAnnotation(AuthorCheckAnnotation.class);
+//            if (adminAuthorCheckAnnotation != null && adminAuthorCheckAnnotation.value()) {
+//                if (request.getSession().getAttribute(Constants.SESS_USER) == null) {
+//                    throw new NoPermissionException();
+//                }
+//            }
+//        }
+//    }
 }

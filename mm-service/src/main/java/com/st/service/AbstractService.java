@@ -14,6 +14,7 @@ public abstract class AbstractService<T> extends AbstrctSelService<T> {
     public abstract IMapper<T> getIMapper();
 
     public int insert(T record) {
+
         return getIMapper().insert(record);
     }
 

@@ -1,10 +1,8 @@
 package com.st.webapi.controller;
 
-import com.st.webapi.annotation.AuthorCheckAnnotation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author bobo.
@@ -14,15 +12,22 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class IndexController {
 
-    @GetMapping("/")
-    public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("index");
-        return modelAndView;
-    }
-    @GetMapping("/version")
-    @AuthorCheckAnnotation
-    public ModelAndView version(){
-        ModelAndView modelAndView = new ModelAndView("version");
-        return modelAndView;
-    }
+    @Autowired
+    private MessageSource messageSource;
+
+
+
+
+//    @GetMapping("/")
+//    public ModelAndView index() {
+//        ModelAndView modelAndView = new ModelAndView("index");
+//        return modelAndView;
+//    }
+//    @GetMapping("/version")
+//    @AuthorCheckAnnotation
+//    public ModelAndView version(){
+//        ModelAndView modelAndView = new ModelAndView("version");
+//        return modelAndView;
+//    }
+
 }

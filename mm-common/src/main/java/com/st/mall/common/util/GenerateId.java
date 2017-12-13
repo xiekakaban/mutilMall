@@ -1,5 +1,7 @@
 package com.st.mall.common.util;
 
+import org.springframework.util.StringUtils;
+
 import java.util.UUID;
 
 /**
@@ -12,7 +14,16 @@ public class GenerateId {
         UUID uniqueKey = UUID.randomUUID();
         return uniqueKey.toString();
     }
-    public static void main(String[] args){
-        System.out.println(generate());
+
+    public static String generate(String prefix,String suffix){
+        StringBuilder sb = new StringBuilder();
+        if(!StringUtils.isEmpty(prefix)){
+            sb.append(prefix);
+        }
+        sb.append(generate());
+        if(!StringUtils.isEmpty(suffix)){
+            sb.append(suffix);
+        }
+        return sb.toString();
     }
 }

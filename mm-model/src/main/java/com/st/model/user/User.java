@@ -20,6 +20,7 @@ public class User extends Domain {
     @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @NotNull
     @Size(min=6,max=20)
     private String username;

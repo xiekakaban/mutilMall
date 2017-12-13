@@ -21,23 +21,23 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class DBAspect extends AbstractAspect{
     Logger logger = LoggerFactory.getLogger(DBAspect.class);
-
-
-    @Before("doInsert()")
-    public void uni(JoinPoint joinPoint){
-        logger.debug("Hellow");
-    }
-
-    @Around("doInsert()")
-    public void validUnique(ProceedingJoinPoint jp){
-        logger.debug("Do validate Insert");
-        HttpServletRequest httpServletRequest = getServletRequest();
-        Object[] args = jp.getArgs();
-        try{
-            Object o = jp.proceed(args);
-        }catch (Throwable ex){
-            logger.debug("",ex);
-        }
-    }
+//
+//
+//    @Before("accessLog()")
+//    public void uni(JoinPoint joinPoint){
+//        logger.debug("Hello w");
+//    }
+//
+//    @Around("doInsert()")
+//    public void validUnique(ProceedingJoinPoint jp){
+//        logger.debug("Do validate Insert");
+//        HttpServletRequest httpServletRequest = getServletRequest();
+//        Object[] args = jp.getArgs();
+//        try{
+//            Object o = jp.proceed(args);
+//        }catch (Throwable ex){
+//            logger.debug("",ex);
+//        }
+//    }
 
 }
