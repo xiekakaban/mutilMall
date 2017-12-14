@@ -1,7 +1,7 @@
-package com.st.dao.customized.user;
+package com.st.dao.customized;
 
 import com.st.dao.base.IMapper;
-import com.st.model.user.Product;
+import com.st.model.Product;
 
 /**
  * @author bobo.

@@ -1,15 +1,14 @@
-package com.st.model.user;
+package com.st.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author bobo.
  * @date 12/13/2017
  * @email ruantianbo@163.com
  */
+@Table(name="tb_product")
 public class Product {
     @Id
     @Column(name = "Id")
@@ -71,4 +70,6 @@ public class Product {
     public void setLink(String link) {
         this.link = link;
     }
+
+
 }

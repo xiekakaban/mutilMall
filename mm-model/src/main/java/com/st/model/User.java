@@ -1,4 +1,4 @@
-package com.st.model.user;
+package com.st.model;
 
 import com.st.model.Domain;
 import org.hibernate.validator.constraints.Email;

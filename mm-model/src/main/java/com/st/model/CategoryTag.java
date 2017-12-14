@@ -1,4 +1,4 @@
-package com.st.model.user;
+package com.st.model;
 
 /**
  * @author bobo.

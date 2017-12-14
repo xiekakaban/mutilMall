@@ -1,11 +1,10 @@
-package com.st.service.user;
+package com.st.service;
 
 import com.st.dao.base.IMapper;
-import com.st.dao.customized.user.IUserMapper;
+import com.st.dao.customized.IUserMapper;
 import com.st.mall.common.util.SecurityUtil;
-import com.st.model.user.User;
+import com.st.model.User;
 import com.st.service.AbstractService;
-import com.st.service.AbstrctSelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +19,11 @@ import java.util.List;
 @Service
 public class UserService extends AbstractService<User> {
 
-    private final IUserMapper mapper;
-
     @Autowired
-    public UserService(IUserMapper mapper) {
-        this.mapper = mapper;
+    private IUserMapper mapper;
+
+    public UserService() {
+
     }
 
     public User selectUserByPrimaryKey(Integer key) {

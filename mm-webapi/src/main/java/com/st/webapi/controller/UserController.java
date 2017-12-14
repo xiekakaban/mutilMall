@@ -1,23 +1,10 @@
 package com.st.webapi.controller;
 
-import com.st.mall.common.util.SecurityUtil;
-import com.st.model.user.User;
-import com.st.service.user.UserService;
-import com.st.webapi.annotation.AuthorCheckAnnotation;
-import com.st.webapi.util.Constants;
-import org.apache.ibatis.io.Resources;
+import com.st.model.User;
+import com.st.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import tk.mybatis.mapper.entity.Example;
-import tk.mybatis.mapper.util.StringUtil;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -53,7 +40,6 @@ public class UserController {
     @RequestMapping(value="/",method = RequestMethod.PUT)
     public void UpdateUser(@RequestBody User user){
         userService.updateByPrimaryKeySelective(user);
-        //System.out.println("put");
     }
     @RequestMapping(value="/{userId}",method = RequestMethod.GET)
     public User findOneUser(@PathVariable("userId") Integer userId){

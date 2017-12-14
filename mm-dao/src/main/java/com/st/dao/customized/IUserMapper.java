@@ -1,9 +1,7 @@
-package com.st.dao.customized.user;
+package com.st.dao.customized;
 
 import com.st.dao.base.IMapper;
-import com.st.model.user.User;
-
-import java.util.List;
+import com.st.model.User;
 
 /**
  * @author Sanmu.
