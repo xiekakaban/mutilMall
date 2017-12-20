@@ -1,0 +1,334 @@
+{
+	"variables": [],
+	"info": {
+		"name": "MultiMall",
+		"_postman_id": "1185c83a-e551-8a4c-739b-e2ae610e122b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "products",
+			"description": "",
+			"item": [
+				{
+					"name": "getAllProducts",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/products/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/products/"
+					},
+					"response": []
+				},
+				{
+					"name": "addProduct",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/products/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"title\": \"MacBook Pro 13寸 2013年,码畜必备。+999换购HHKB键盘\",\n        \"price\": 11999,\n        \"content\": \"穷逼，看了也买不起，还是别看了\",\n        \"link\": \"www.baidu.com\",\n        \"categoryId\": 2,\n        \"taoBao\": true\n}"
+						},
+						"description": "-Post\nhttp://10.248.155.224:8080/v1/products/"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/products/12",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "-Delete\nhttp://10.248.155.224:8080/v1/products/12"
+					},
+					"response": []
+				},
+				{
+					"name": "modifyProduct",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/products/",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"id\": 11,\n        \"title\": \"一加3手机荣耀登场，走过路过不要错过,+99换赠酸枝保护套\",\n        \"content\": \"看看不要钱\"\n     \n    }"
+						},
+						"description": "-PUT\nhttp://10.248.155.224:8080/v1/products/"
+					},
+					"response": []
+				},
+				{
+					"name": "getOneProductDetail",
+					"request": {
+						"url": {
+							"raw": "http://10.248.155.224:8080/v1/products/11?detail=true",
+							"protocol": "http",
+							"host": [
+								"10",
+								"248",
+								"155",
+								"224"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"products",
+								"11"
+							],
+							"query": [
+								{
+									"key": "detail",
+									"value": "true",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/products/11?detail=true"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"description": "",
+			"item": [
+				{
+					"name": "AddUser",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"username\": \"tianyeling\",\n        \"pwd\": \"testuser\",\n        \"email\": \"xiekakaban@163.com\",\n        \"phone\": \"13645857110\",\n        \"location\": null\n}"
+						},
+						"description": "-POST\n\nhttp://10.248.155.224:8080/v1/users/"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/users/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-GET\nhttp://10.248.155.224:8080/v1/users/"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/users/9528",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "-DELETE\nhttp://10.248.155.224:8080/v1/users/9528"
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser(PUT)",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/users/",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9529,\n        \"email\": \"tianyeling@163.com\",\n        \"phone\": \"13645857110\"\n\t\n}"
+						},
+						"description": "-PUT\nhttp://10.248.155.224:8080/v1/users/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"description": "",
+			"item": [
+				{
+					"name": "getAllCategorys",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/categorys/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/categorys/"
+					},
+					"response": []
+				},
+				{
+					"name": "addCategory",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/categorys/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n       \n        \"title\": \"电脑\",\n        \"description\": \"电脑是你另外一个女朋友，一定要好好对待\",\n        \"content\": \"你要写歌，会Hello World\"\n}"
+						},
+						"description": "-Post\nhttp://10.248.155.224:8080/v1/categorys/"
+					},
+					"response": []
+				},
+				{
+					"name": "modifyCategory",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/categorys/",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"id\": 2,\n        \n        \"content\": \"你要写歌，会Hello World,你终于还是错过了\"\n    }"
+						},
+						"description": "-Put\nhttp://10.248.155.224:8080/v1/categorys/"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategory",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/categorys/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "-Delete\nhttp://10.248.155.224:8080/v1/categorys/2"
+					},
+					"response": []
+				},
+				{
+					"name": "getOneCategoryDetail",
+					"request": {
+						"url": {
+							"raw": "http://10.248.155.224:8080/v1/categorys/1/?detail=true",
+							"protocol": "http",
+							"host": [
+								"10",
+								"248",
+								"155",
+								"224"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"categorys",
+								"1",
+								""
+							],
+							"query": [
+								{
+									"key": "detail",
+									"value": "true",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/categorys/1/?detail=true"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categoryTags",
+			"description": "",
+			"item": [
+				{
+					"name": "addCategoryTag",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/categorys/1/categoryTags",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n        \"tagName\": \"年中大促销\"\n       \n}"
+						},
+						"description": "-Post\nhttp://10.248.155.224:8080/v1/categorys/1/categoryTags"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategory",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/categorys/categoryTags/",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "-Delete\nhttp://10.248.155.224:8080/v1/categorys/1/categoryTags/2"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCategoryTags",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/categorys/categoryTags",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/categorys/categoryTags"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
