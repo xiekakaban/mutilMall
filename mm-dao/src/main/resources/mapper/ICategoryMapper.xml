@@ -1,0 +1,33 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.st.mall.dao.customized.ICategoryMapper">
+
+    <resultMap id="CategoryDetailVOMap" type="CategoryDetailVO" autoMapping="true">
+        <result column="id" property="id" jdbcType="INTEGER"></result>
+        <collection property="categoryTags" ofType="CategoryTag" columnPrefix="ctag_" autoMapping="true">
+            <id column="id" property="id" jdbcType="INTEGER"></id>
+        </collection>
+    </resultMap>
+
+
+
+
+
+    <select id="selectCategoryDetailByPrimaryKey" resultMap="CategoryDetailVOMap" parameterType="Integer">
+      select
+        c.*,
+        <include refid="categoryTagsAS"/>
+      from tb_category c left JOIN tb_category_tag ctag on c.id = ctag.category_id where c.id=#{key}
+    </select>
+    <select id="selectCategoryDetailByCategory" resultMap="CategoryDetailVOMap" parameterType="Category">
+
+    </select>
+
+    <sql id="categoryTagsAS">
+        ctag.id as ctag_id,
+        ctag.tag_name as ctag_tag_name,
+        ctag.create_time as ctag_create_time,
+        ctag.category_id as ctag_category_id,
+        ctag.last_modify_time as ctag_last_modify_time
+    </sql>
+
+</mapper>
