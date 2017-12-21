@@ -12,17 +12,22 @@ import java.util.Date;
 public class ProductTag extends Domain{
 
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    String tag_name;
+    String tagName;
 
     Date createTime;
 
     Date lastModifyTime;
 
     Integer productId;
+
+    public ProductTag() {
+    }
+
+
 
     public Integer getId() {
         return id;
@@ -32,12 +37,20 @@ public class ProductTag extends Domain{
         this.id = id;
     }
 
-    public String getTag_name() {
-        return tag_name;
+    public String getTagName() {
+        return tagName;
     }
 
-    public void setTag_name(String tag_name) {
-        this.tag_name = tag_name;
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public Date getCreateTime() {

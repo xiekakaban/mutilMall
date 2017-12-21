@@ -8,6 +8,7 @@ import com.st.mall.model.vo.ProductDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,12 +46,8 @@ public class ProductController {
 
     /**Product Select One*/
     @RequestMapping(value="/{productId}",method = RequestMethod.GET)
-    public Product findOneProduct(@PathVariable("productId") Integer productId,@RequestParam(value = "detail", defaultValue = "false") Boolean detail){
-        if(detail){
-            return productService.selectOneProductDetailVOByPrimaryKey(productId);
-        }else {
-            return productService.selectByPrimaryKey(productId);
-        }
+    public Product findOneProduct(@PathVariable("productId") Integer productId){
+        return productService.selectByPrimaryKey(productId);
     }
 
     /**Product Select All*/
@@ -62,8 +59,11 @@ public class ProductController {
     /****************************** Product Tag **********************************************/
 
     /**Product Tag Add*/
-    @RequestMapping(value="/productTags",method = RequestMethod.POST)
-    public void addProductTag(@RequestBody ProductTag productTag){
+    @RequestMapping(value="/{productId}/productTags",method = RequestMethod.POST)
+    public void addProductTag(@PathVariable("productId") Integer productId,@RequestBody ProductTag productTag){
+        productTag.setProduct(productId);
+        productTag.setCreateTime(new Date());
+        productTag.setLastModifyTime(new Date());
         productTagService.insert(productTag);
     }
     /**Product Tag Delete*/
@@ -90,12 +90,12 @@ public class ProductController {
     }
 
     /**************************Product Detail **************/
-    @RequestMapping(value="/detail/{productDetailId}",method = RequestMethod.GET)
-    public ProductDetailVO findOneProductDetail(@PathVariable("productDetailId") Integer productDetailId){
-        return productService.selectOneProductDetailVOByPrimaryKey(productDetailId);
+    @RequestMapping(value="/details/{productDetailId}",method = RequestMethod.GET)
+    public Object findOneProductDetail(@RequestParam(value = "content",defaultValue = "false")Boolean content,@PathVariable("productDetailId") Integer productDetailId){
+        if(content){
+            return productService.selectOneProductContentByPrimaryKey(productDetailId);
+        }else{
+            return productService.selectOneProductDetailVOByPrimaryKey(productDetailId);
+        }
     }
-
-
-
-
 }

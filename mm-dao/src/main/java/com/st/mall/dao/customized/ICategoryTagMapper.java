@@ -9,4 +9,5 @@ import com.st.mall.model.entity.CategoryTag;
  * @email ruantianbo@163.com
  */
 public interface ICategoryTagMapper extends IMapper<CategoryTag> {
+    
 }

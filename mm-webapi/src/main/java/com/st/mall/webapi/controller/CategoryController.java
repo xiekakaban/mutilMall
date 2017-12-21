@@ -50,10 +50,15 @@ public class CategoryController {
 
     @RequestMapping(value = "/{categoryId}" , method = RequestMethod.GET)
     public Category findOneCategory(@PathVariable("categoryId") Integer categoryId,@RequestParam(value = "detail",defaultValue="false") Boolean detail){
-        if(detail){
-            return categoryService.selectCategoryDetailByPrimaryKey(categoryId);
-        }else{
             return categoryService.selectByPrimaryKey(categoryId);
+    }
+
+    @RequestMapping(value = "/details/{categoryId}",method = RequestMethod.GET)
+    public Object findOneCategoryDetail(@RequestParam(value = "content",defaultValue = "false")Boolean content,@PathVariable("categoryId")Integer categoryId){
+        if(content){
+            return categoryService.selectCategoryContentByPrimaryKey(categoryId);
+        }else{
+            return categoryService.selectCategoryDetailByPrimaryKey(categoryId);
         }
     }
 
@@ -86,6 +91,7 @@ public class CategoryController {
     public List<CategoryTag> findAllCategory(){
         return categoryTagService.selectAll();
     }
+
 
 
 }

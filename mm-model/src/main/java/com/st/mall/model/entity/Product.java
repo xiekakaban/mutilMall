@@ -8,15 +8,21 @@ import java.util.Date;
  * @date 12/13/2017
  * @email ruantianbo@163.com
  */
-@Table(name="tb_product")
-public class Product extends Domain{
+@Table(name = "tb_product")
+public class Product extends Domain {
     @Id
     @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String title;
+    String image;
+    Integer store;
+    Integer likes;
+
     double price;
-    String content;
+    String description;
+    String parameters;
+
     //淘宝联盟
     Boolean isTaoBao;
     //淘宝链接
@@ -25,10 +31,8 @@ public class Product extends Domain{
     Integer categoryId;
 
     Date createTime;
+
     Date lastModifyTime;
-
-
-
 
     public Integer getId() {
         return id;
@@ -54,13 +58,7 @@ public class Product extends Domain{
         this.price = price;
     }
 
-    public String getContent() {
-        return content;
-    }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
 
     public Boolean getTaoBao() {
         return isTaoBao;
@@ -101,5 +99,45 @@ public class Product extends Domain{
 
     public void setLastModifyTime(Date lastModifyTime) {
         this.lastModifyTime = lastModifyTime;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Integer getStore() {
+        return store;
+    }
+
+    public void setStore(Integer store) {
+        this.store = store;
+    }
+
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(String parameters) {
+        this.parameters = parameters;
     }
 }

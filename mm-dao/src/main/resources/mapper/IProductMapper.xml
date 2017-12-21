@@ -1,40 +1,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.st.mall.dao.customized.IProductMapper">
 
-    <resultMap id="CategoryDetailVOMap" type="CategoryDetailVO" autoMapping="true">
-        <result column="id" property="id" jdbcType="INTEGER"></result>
-        <collection property="categoryTags" ofType="CategoryTag" columnPrefix="ctag_" autoMapping="true">
-            <id column="id" property="id" jdbcType="INTEGER"></id>
-        </collection>
-    </resultMap>
 
-    <resultMap id="ProductDetailVOMapper" type="ProductDetailVO" autoMapping="true">
-      <result property="id" column="id" jdbcType="INTEGER"/>
-        <association property="categoryDetailVO" javaType="CategoryDetailVO" resultMap="CategoryDetailVOMap">
-        </association>
-    </resultMap>
+
     
-    <select id="getProductDetailByProductId" resultMap="ProductDetailVOMapper" parameterType="Integer">
-      select p.*,
-      c.id as c_id,
-      c.title as c_title,
-      c.description as c_description,
-      c.content as c_content,
-      c.last_modify_time as c_last_modify_time,
-      c.create_time as c_create_time,
-      <include refid="categoryTagsAS"/>
-
-        from tb_product p
+    <select id="getProductDetailByProductId" resultMap="commonMapper.ProductDetailVOMapper" parameterType="Integer">
+      select
+      <include refid="commonMapper.productAS"></include>
+      ,
+      <include refid="commonMapper.categoryAS"></include>
+      ,
+      <include refid="commonMapper.categoryTagsAS" ></include>
+      ,
+      <include refid="commonMapper.productTagsAS" ></include>
+      from tb_product p
+      LEFT JOIN tb_product_tag ptag ON p.id = ptag.product_id
       LEFT JOIN tb_category c on p.category_id = c.id
       LEFT JOIN tb_category_tag ctag on c.id = ctag.category_id
       WHERE p.id=#{key}
     </select>
 
-    <sql id="categoryTagsAS">
-        ctag.id as ctag_id,
-        ctag.tag_name as ctag_tag_name,
-        ctag.create_time as ctag_create_time,
-        ctag.category_id as ctag_category_id,
-        ctag.last_modify_time as ctag_last_modify_time
-    </sql>
+    <select id="getProductContent" resultType="ProductContentVO" parameterType="Integer">
+      select p.content from tb_product p where p.id=#{key}
+    </select>
+
+
 </mapper>

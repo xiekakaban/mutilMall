@@ -1,0 +1,95 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="commonMapper">
+    <resultMap id="CategoryTagsMapper" type="CategoryTag">
+        <id column="ctag_id" property="id" jdbcType="INTEGER"></id>
+        <result column="ctag_tag_name" property="tagName" jdbcType="VARCHAR"></result>
+        <result column="ctag_category_id" property="categoryId" jdbcType="VARCHAR"></result>
+        <result column="ctag_create_time" property="createTime" jdbcType="DATE"></result>
+        <result column="ctag_last_modify_time" property="lastModifyTime" jdbcType="DATE"></result>
+    </resultMap>
+
+    <resultMap id="ProductTagMapper" type="ProductTag">
+        <id column="ptag_id" property="id" jdbcType="INTEGER"></id>
+        <result column="ptag_tag_name" property="tagName" jdbcType="VARCHAR"></result>
+        <result column="ptag_create_time" property="createTime" jdbcType="DATE"></result>
+        <result column="ptag_last_modify_time" property="lastModifyTime" jdbcType="DATE"></result>
+        <result column="ptag_product_id" property="productId" jdbcType="INTEGER"></result>
+    </resultMap>
+
+    <resultMap id="CategoryMapper" type="Category">
+        <id column="c_id" property="id" jdbcType="INTEGER"></id>
+        <result column="c_title" property="title" jdbcType="VARCHAR"></result>
+        <result column="c_description" property="description" jdbcType="VARCHAR"></result>
+        <result column="c_create_time" property="createTime" jdbcType="DATE"></result>
+        <result column="c_last_modify_time" property="lastModifyTime" jdbcType="DATE"></result>
+    </resultMap>
+
+    <resultMap id="ProductMapper" type="Product">
+        <id column="p_id" property="id" jdbcType="INTEGER"></id>
+        <result column="p_title" property="title" jdbcType="VARCHAR"></result>
+        <result column="p_price" property="price" jdbcType="VARCHAR"></result>
+        <result column="p_is_tao_bao" property="isTaoBao" jdbcType="SMALLINT"></result>
+        <result column="p_image" property="image" jdbcType="VARCHAR"></result>
+        <result column="p_store" property="store" jdbcType="INTEGER"></result>
+        <result column="p_likes" property="likes" jdbcType="INTEGER"></result>
+        <result column="p_description" property="description" jdbcType="VARCHAR"></result>
+        <result column="p_link" property="link" jdbcType="VARCHAR"></result>
+        <result column="p_category_id" property="categoryId" jdbcType="INTEGER"></result>
+        <result column="p_create_time" property="createTime" jdbcType="DATE"></result>
+        <result column="p_last_modify_time" property="lastModifyTime" jdbcType="DATE"></result>
+    </resultMap>
+
+    <resultMap id="CategoryDetailVOMapper" type="CategoryDetailVO" extends="CategoryMapper">
+        <collection property="categoryTags" ofType="CategoryTag" resultMap="CategoryTagsMapper"></collection>
+    </resultMap>
+
+    <resultMap id="ProductDetailVOMapper" type="ProductDetailVO" extends="ProductMapper">
+        <association property="categoryDetailVO" resultMap="CategoryDetailVOMapper" javaType="CategoryDetailVO"></association>
+        <collection property="productTags" ofType="ProductTag" resultMap="ProductTagMapper"></collection>
+    </resultMap>
+
+
+    <sql id="categoryAS">
+
+      c.id as c_id,
+      c.title as c_title,
+      c.description as c_description,
+      c.last_modify_time as c_last_modify_time,
+      c.create_time as c_create_time
+    </sql>
+    <sql id="categoryTagsAS">
+
+        ctag.id as ctag_id,
+        ctag.tag_name as ctag_tag_name,
+        ctag.create_time as ctag_create_time,
+        ctag.category_id as ctag_category_id,
+        ctag.last_modify_time as ctag_last_modify_time
+    </sql>
+
+
+    <sql id="productTagsAS">
+
+        ptag.id as ptag_id,
+        ptag.tag_name as ptag_tag_name,
+        ptag.product_id as ptag_product_id,
+        ptag.create_time as ptag_create_time,
+        ptag.last_modify_time as ptag_last_modify_time
+    </sql>
+
+    <sql id="productAS">
+        p.id AS p_id,
+        p.title AS p_title,
+        p.image AS p_image,
+        p.store AS p_store,
+        p.likes AS p_likes,
+        p.is_tao_bao AS p_is_tao_bao,
+        p.link AS p_link,
+        p.price AS p_price,
+        p.category_id AS p_category_id,
+        p.last_modify_time as p_last_modify_time,
+        p.create_time as p_create_time,
+        p.parameters AS p_parameters,
+        p.description AS p_description
+    </sql>
+
+</mapper>

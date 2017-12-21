@@ -74,10 +74,74 @@
 					"response": []
 				},
 				{
-					"name": "getOneProductDetail",
+					"name": "getOneProduct",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/products/11",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/products/11"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllProductTags",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/products/productTags",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/products/productTags"
+					},
+					"response": []
+				},
+				{
+					"name": "addProductTag",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/products/11/productTags",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n       \n        \"tagName\": \"王者霸业-锅天裂\"\n       \n        \n}"
+						},
+						"description": "-Post\nhttp://10.248.155.224:8080/v1/products/11/productTags"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProductTag",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/products/productTags/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "-Delete\nhttp://10.248.155.224:8080/v1/products/productTags/2"
+					},
+					"response": []
+				},
+				{
+					"name": "getOneProduct(details)",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/products/details/11",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/products/details/11"
+					},
+					"response": []
+				},
+				{
+					"name": "getOneProduct(content)",
 					"request": {
 						"url": {
-							"raw": "http://10.248.155.224:8080/v1/products/11?detail=true",
+							"raw": "http://10.248.155.224:8080/v1/products/details/11?content=true",
 							"protocol": "http",
 							"host": [
 								"10",
@@ -89,11 +153,12 @@
 							"path": [
 								"v1",
 								"products",
+								"details",
 								"11"
 							],
 							"query": [
 								{
-									"key": "detail",
+									"key": "content",
 									"value": "true",
 									"equals": true,
 									"description": ""
@@ -104,7 +169,7 @@
 						"method": "GET",
 						"header": [],
 						"body": {},
-						"description": "-Get\nhttp://10.248.155.224:8080/v1/products/11?detail=true"
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/products/details/11?content=true"
 					},
 					"response": []
 				}
@@ -245,10 +310,32 @@
 					"response": []
 				},
 				{
-					"name": "getOneCategoryDetail",
+					"name": "getOneCategory",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/categorys/1/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/categorys/1/?detail=true"
+					},
+					"response": []
+				},
+				{
+					"name": "getOneCategory(details)",
+					"request": {
+						"url": "http://10.248.155.224:8080/v1/categorys/details/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/categorys/details/1"
+					},
+					"response": []
+				},
+				{
+					"name": "getOneCategory(content)",
 					"request": {
 						"url": {
-							"raw": "http://10.248.155.224:8080/v1/categorys/1/?detail=true",
+							"raw": "http://10.248.155.224:8080/v1/categorys/details/1?content=true",
 							"protocol": "http",
 							"host": [
 								"10",
@@ -260,12 +347,12 @@
 							"path": [
 								"v1",
 								"categorys",
-								"1",
-								""
+								"details",
+								"1"
 							],
 							"query": [
 								{
-									"key": "detail",
+									"key": "content",
 									"value": "true",
 									"equals": true,
 									"description": ""
@@ -276,7 +363,7 @@
 						"method": "GET",
 						"header": [],
 						"body": {},
-						"description": "-Get\nhttp://10.248.155.224:8080/v1/categorys/1/?detail=true"
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/categorys/details/1?content=tru\ne"
 					},
 					"response": []
 				}
@@ -300,7 +387,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \n        \"tagName\": \"年中大促销\"\n       \n}"
+							"raw": "{\n   \n        \"tagName\": \"圣诞回馈-极限挑战\"\n       \n}"
 						},
 						"description": "-Post\nhttp://10.248.155.224:8080/v1/categorys/1/categoryTags"
 					},

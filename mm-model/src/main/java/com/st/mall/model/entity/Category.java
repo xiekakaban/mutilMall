@@ -17,11 +17,9 @@ public class Category extends Domain{
 
     String title;
     String description;
-    String content;
 
     Date createTime;
     Date lastModifyTime;
-
 
 
     public Integer getId() {
@@ -48,13 +46,6 @@ public class Category extends Domain{
         this.description = description;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 
     public Date getCreateTime() {
         return createTime;

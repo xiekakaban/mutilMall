@@ -26,9 +26,9 @@ CREATE TABLE `tb_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `content` text COLLATE utf8_unicode_ci,
   `create_time` datetime NOT NULL,
   `last_modify_time` datetime NOT NULL,
+  `content` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `category_title_uindex` (`title`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -40,7 +40,7 @@ CREATE TABLE `tb_category` (
 
 LOCK TABLES `tb_category` WRITE;
 /*!40000 ALTER TABLE `tb_category` DISABLE KEYS */;
-INSERT INTO `tb_category` VALUES (1,'手机','这里没有内容','这里没有简介','2017-12-20 18:12:47','2017-12-20 18:12:50'),(3,'电脑','电脑是你另外一个女朋友，一定要好好对待','你要写歌，会Hello World','2017-12-20 21:17:41','2017-12-20 21:17:41');
+INSERT INTO `tb_category` VALUES (1,'手机','这里没有内容','2017-12-20 18:12:47','2017-12-20 18:12:50','wys这里没有简介'),(3,'电脑','电脑是你另外一个女朋友，一定要好好对待','2017-12-20 21:17:41','2017-12-20 21:17:41','jxy电脑是你另外一个女朋友');
 /*!40000 ALTER TABLE `tb_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `tb_category_tag` (
   UNIQUE KEY `tb_category_tag_tag_name_uindex` (`tag_name`),
   KEY `tb_category_tag_tb_category_id_fk` (`category_id`),
   CONSTRAINT `tb_category_tag_tb_category_id_fk` FOREIGN KEY (`category_id`) REFERENCES `tb_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `tb_category_tag` (
 
 LOCK TABLES `tb_category_tag` WRITE;
 /*!40000 ALTER TABLE `tb_category_tag` DISABLE KEYS */;
-INSERT INTO `tb_category_tag` VALUES (1,'2017新款',1,'2017-12-20 13:22:13','2017-12-20 13:22:19'),(4,'双11促销',3,'2017-12-20 21:23:26','2017-12-20 21:23:26'),(5,'年中大促销',1,'2017-12-20 21:45:52','2017-12-20 21:45:52');
+INSERT INTO `tb_category_tag` VALUES (1,'2017新款',1,'2017-12-20 13:22:13','2017-12-20 13:22:19'),(4,'双11促销',3,'2017-12-20 21:23:26','2017-12-20 21:23:26'),(5,'年中大促销',1,'2017-12-20 21:45:52','2017-12-20 21:45:52'),(6,'圣诞回馈-极限挑战',1,'2017-12-21 16:40:07','2017-12-21 16:40:07');
 /*!40000 ALTER TABLE `tb_category_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,18 +84,23 @@ DROP TABLE IF EXISTS `tb_product`;
 CREATE TABLE `tb_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `store` int(10) DEFAULT '0',
+  `likes` int(10) DEFAULT '0',
   `price` double NOT NULL,
-  `content` text COLLATE utf8_unicode_ci,
+  `description` varchar(400) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_tao_bao` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL,
   `link` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `create_time` datetime NOT NULL,
   `last_modify_time` datetime NOT NULL,
+  `parameters` text COLLATE utf8_unicode_ci,
+  `content` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tb_product_title_uindex` (`title`),
   KEY `tb_product_tb_category_id_fk` (`category_id`),
   CONSTRAINT `tb_product_tb_category_id_fk` FOREIGN KEY (`category_id`) REFERENCES `tb_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,8 +109,41 @@ CREATE TABLE `tb_product` (
 
 LOCK TABLES `tb_product` WRITE;
 /*!40000 ALTER TABLE `tb_product` DISABLE KEYS */;
-INSERT INTO `tb_product` VALUES (11,'一加3手机荣耀登场，走过路过不要错过,+99换赠酸枝保护套',0,'看看不要钱','y','www.google.com',1,'2017-12-20 18:12:36','2017-12-20 18:12:41');
+INSERT INTO `tb_product` VALUES (11,'一加3手机荣耀登场，走过路过不要错过,+99换赠酸枝保护套','{\"default.jpg\"}',0,0,0,'一加手机是国内非常畅销的一款手机，薄而且配置非常高，6G+32G','y','www.google.com',1,'2017-12-20 18:12:36','2017-12-20 18:12:41','','看了你也买不起');
 /*!40000 ALTER TABLE `tb_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_product_comment`
+--
+
+DROP TABLE IF EXISTS `tb_product_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_product_comment` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `comment_content` varchar(400) COLLATE utf8_unicode_ci NOT NULL,
+  `comment_time` datetime DEFAULT NULL,
+  `repley_to` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tb_product_comment_tb_product_id_fk` (`product_id`),
+  KEY `tb_product_comment_tb_user_id_fk` (`user_id`),
+  KEY `tb_product_comment_tb_product_comment_id_fk` (`repley_to`),
+  CONSTRAINT `tb_product_comment_tb_product_comment_id_fk` FOREIGN KEY (`repley_to`) REFERENCES `tb_product_comment` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `tb_product_comment_tb_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `tb_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tb_product_comment_tb_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `tb_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_product_comment`
+--
+
+LOCK TABLES `tb_product_comment` WRITE;
+/*!40000 ALTER TABLE `tb_product_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_product_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -124,7 +162,7 @@ CREATE TABLE `tb_product_tag` (
   PRIMARY KEY (`id`),
   KEY `tb_product_tag_tb_product_id_fk` (`product_id`),
   CONSTRAINT `tb_product_tag_tb_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `tb_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,6 +171,7 @@ CREATE TABLE `tb_product_tag` (
 
 LOCK TABLES `tb_product_tag` WRITE;
 /*!40000 ALTER TABLE `tb_product_tag` DISABLE KEYS */;
+INSERT INTO `tb_product_tag` VALUES (1,'贪玩蓝月-渣渣辉',11,'2017-12-21 13:45:39','2017-12-21 13:45:47'),(3,'王者霸业-锅天裂',11,'2017-12-21 13:54:37','2017-12-21 13:54:37'),(4,'一加5即将上市，客官们多等等',11,'2017-12-21 14:44:15','2017-12-21 14:44:15');
 /*!40000 ALTER TABLE `tb_product_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-20 22:46:52
+-- Dump completed on 2017-12-21 21:11:43

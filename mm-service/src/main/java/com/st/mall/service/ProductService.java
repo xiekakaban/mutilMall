@@ -3,6 +3,7 @@ package com.st.mall.service;
 import com.st.mall.dao.base.IMapper;
 import com.st.mall.dao.customized.IProductMapper;
 import com.st.mall.model.entity.Product;
+import com.st.mall.model.vo.ProductContentVO;
 import com.st.mall.model.vo.ProductDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,10 @@ public class ProductService extends AbstractService<Product> {
 
     public ProductDetailVO selectOneProductDetailVOByPrimaryKey(Object key){
         return mapper.getProductDetailByProductId(key);
+    }
+
+    public ProductContentVO selectOneProductContentByPrimaryKey(Object key){
+        return mapper.getProductContent(key);
     }
 
 }

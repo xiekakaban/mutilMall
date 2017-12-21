@@ -16,6 +16,9 @@ public class ProductDetailVO extends Product {
 
     List<ProductTag> productTags;
 
+    public ProductDetailVO() {
+    }
+
     public CategoryDetailVO getCategoryDetailVO() {
         return categoryDetailVO;
     }

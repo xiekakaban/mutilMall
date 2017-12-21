@@ -3,6 +3,7 @@ package com.st.mall.service;
 import com.st.mall.dao.base.IMapper;
 import com.st.mall.dao.customized.ICategoryTagMapper;
 import com.st.mall.model.entity.CategoryTag;
+import com.st.mall.model.vo.CategoryContentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,6 @@ public class CategoryTagService extends AbstractService<CategoryTag> {
     public IMapper<CategoryTag> getIMapper() {
         return mapper;
     }
+
 
 }
