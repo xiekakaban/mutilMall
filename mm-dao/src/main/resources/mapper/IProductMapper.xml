@@ -24,5 +24,19 @@
       select p.content from tb_product p where p.id=#{key}
     </select>
 
+    <select id="getProductComments" resultMap="commonMapper.ProductCommentVOMapper" parameterType="Integer">
+        select
+        p_comment.id as p_comment_id,
+        p_comment.comment_content as p_comment_comment_content,
+        p_comment.comment_time as p_comment_comment_time,
+        p_comment.product_id as p_comment_product_id,
+        p_comment.reply_to as p_comment_reply_to,
+        <include refid="commonMapper.userAS"></include>
+        from tb_product_comment p_comment
+          LEFT JOIN  tb_product p on p.id = p_comment.product_id
+          LEFT JOIN tb_user u on p_comment.user_id = u.id
+        where p.id=#{key}
+    </select>
+
 
 </mapper>

@@ -14,7 +14,7 @@ public class Category extends Domain{
     @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-
+    String content;
     String title;
     String description;
 
@@ -63,4 +63,11 @@ public class Category extends Domain{
         this.lastModifyTime = lastModifyTime;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }

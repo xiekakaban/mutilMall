@@ -1,5 +1,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="commonMapper">
+
+    <resultMap id="userMapper" type="User">
+        <id column="u_id" property="id" jdbcType="INTEGER"></id>
+        <!--<result column="u_pwd" property="pwd" jdbcType="VARCHAR"></result>-->
+        <result column="u_username" property="username" jdbcType="VARCHAR"></result>
+        <result column="u_avatar" property="avatar" jdbcType="VARCHAR"></result>
+        <result column="u_email" property="email" jdbcType="VARCHAR"></result>
+        <result column="u_phone" property="phone" jdbcType="VARCHAR"></result>
+        <result column="u_location" property="location" jdbcType="VARCHAR"></result>
+        <result column="u_last_modify_time" property="lastModifyTime" jdbcType="DATE"></result>
+        <result column="u_create_time" property="createTime" jdbcType="DATE"></result>
+    </resultMap>
+
     <resultMap id="CategoryTagsMapper" type="CategoryTag">
         <id column="ctag_id" property="id" jdbcType="INTEGER"></id>
         <result column="ctag_tag_name" property="tagName" jdbcType="VARCHAR"></result>
@@ -48,6 +61,26 @@
         <collection property="productTags" ofType="ProductTag" resultMap="ProductTagMapper"></collection>
     </resultMap>
 
+    <resultMap id="ProductCommentVOMapper" type="ProductCommentVO">
+        <id column="p_comment_id" property="id" jdbcType="INTEGER"></id>
+        <result column="p_comment_product_id" property="productId" jdbcType="INTEGER"></result>
+        <result column="p_comment_comment_content" property="commentContent" jdbcType="VARCHAR"></result>
+        <result column="p_comment_comment_time" property="commentTime" jdbcType="VARCHAR"></result>
+        <result column="p_comment_reply_to" property="replyTo" jdbcType="INTEGER"></result>
+        <association property="user" resultMap="userMapper" javaType="User"></association>
+    </resultMap>
+
+
+    <sql id="userAS">
+       u.id as u_id,
+        u.username as u_username,
+        u.avatar as u_avatar,
+        u.email as u_email,
+        u.location as u_location,
+        u.phone as u_phone,
+        u.last_modify_time as u_last_modify_time,
+        u.create_time as u_create_time
+    </sql>
 
     <sql id="categoryAS">
 

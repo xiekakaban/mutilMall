@@ -1,31 +1,25 @@
-package com.st.mall.model.entity;
+package com.st.mall.model.vo;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.st.mall.model.entity.ProductComment;
+import com.st.mall.model.entity.User;
+
 import java.util.Date;
 
 /**
  * @author bobo.
- * @date 12/21/2017
+ * @date 12/25/2017
  * @email ruantianbo@163.com
  */
-public class ProductComment {
-
-    @Id
-    @Column(name = "Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductCommentVO {
     Integer id;
 
     Integer productId;
-    Integer userid;
-    String comment;
+    User user;
+    String commentContent;
     Date commentTime;
     Integer replyTo;
 
-    public ProductComment() {
-
+    public ProductCommentVO() {
     }
 
     public Integer getId() {
@@ -44,20 +38,20 @@ public class ProductComment {
         this.productId = productId;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getComment() {
-        return comment;
+    public String getCommentContent() {
+        return commentContent;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCommentContent(String commentContent) {
+        this.commentContent = commentContent;
     }
 
     public Date getCommentTime() {
@@ -68,7 +62,7 @@ public class ProductComment {
         this.commentTime = commentTime;
     }
 
-    public Integer getReplyTo() {
+     public Integer getReplyTo() {
         return replyTo;
     }
 

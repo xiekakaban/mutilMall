@@ -2,6 +2,8 @@ package com.st.mall.webapi.controller;
 
 import com.st.mall.model.entity.User;
 import com.st.mall.service.UserService;
+import com.st.mall.webapi.entity.ResultBack;
+import com.st.mall.webapi.util.ResultBackUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,26 +30,29 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/",method=RequestMethod.POST)
-    public void addUser(@RequestBody User user){
+    public ResultBack addUser(@RequestBody User user){
         userService.insert(user);
+        return ResultBackUtil.success();
     }
 
     @RequestMapping(value = "/{userId}",method = RequestMethod.DELETE)
-    public void deleteUser(@PathVariable("userId") Integer userId){
+    public ResultBack deleteUser(@PathVariable("userId") Integer userId){
         userService.deleteByPrimaryKey(userId);
+        return ResultBackUtil.success();
     }
 
     @RequestMapping(value="/",method = RequestMethod.PUT)
-    public void UpdateUser(@RequestBody User user){
+    public ResultBack UpdateUser(@RequestBody User user){
         userService.updateByPrimaryKeySelective(user);
+        return ResultBackUtil.success();
     }
     @RequestMapping(value="/{userId}",method = RequestMethod.GET)
-    public User findOneUser(@PathVariable("userId") Integer userId){
-        return userService.selectUserByPrimaryKey(userId);
+    public ResultBack findOneUser(@PathVariable("userId") Integer userId){
+        return ResultBackUtil.success(userService.selectUserByPrimaryKey(userId));
     }
     @RequestMapping(value="/",method = RequestMethod.GET)
-    public List<User> findAllUsers() {
-        return userService.selectAll();
+    public ResultBack findAllUsers() {
+        return ResultBackUtil.success(userService.selectAll());
     }
 
 
