@@ -172,6 +172,42 @@
 						"description": "-Get\nhttp://10.248.155.224:8080/v1/products/details/11?content=true"
 					},
 					"response": []
+				},
+				{
+					"name": "getOneProduct(comments)",
+					"request": {
+						"url": {
+							"raw": "http://10.248.155.224:8080/v1/products/details/11?comments=true",
+							"protocol": "http",
+							"host": [
+								"10",
+								"248",
+								"155",
+								"224"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"products",
+								"details",
+								"11"
+							],
+							"query": [
+								{
+									"key": "comments",
+									"value": "true",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "-Get\nhttp://10.248.155.224:8080/v1/products/details/11?comments=true"
+					},
+					"response": []
 				}
 			]
 		},
@@ -189,11 +225,16 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic eGlla2FrYWJhbjoxMjM0NTY=",
+								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"username\": \"tianyeling\",\n        \"pwd\": \"testuser\",\n        \"email\": \"xiekakaban@163.com\",\n        \"phone\": \"13645857110\",\n        \"location\": null\n}"
+							"raw": "{\n        \"username\": \"rumusanfen\",\n        \"pwd\": \"testuser\",\n        \"email\": \"357536041@163.com\",\n        \"phone\": \"15158041141\",\n        \"location\": null\n}"
 						},
 						"description": "-POST\n\nhttp://10.248.155.224:8080/v1/users/"
 					},
@@ -204,7 +245,13 @@
 					"request": {
 						"url": "http://10.248.155.224:8080/v1/users/",
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic eGlla2FrYWJhbjoxMjM0NTY=",
+								"description": ""
+							}
+						],
 						"body": {},
 						"description": "-GET\nhttp://10.248.155.224:8080/v1/users/"
 					},
@@ -272,7 +319,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n       \n        \"title\": \"电脑\",\n        \"description\": \"电脑是你另外一个女朋友，一定要好好对待\",\n        \"content\": \"你要写歌，会Hello World\"\n}"
+							"raw": "{\n       \n        \"title\": \"苹果\",\n        \"description\": \"Merry Christasmas\",\n        \"content\": \"应该没有拼错吧。哈哈哈哈\"\n}\n"
 						},
 						"description": "-Post\nhttp://10.248.155.224:8080/v1/categorys/"
 					},

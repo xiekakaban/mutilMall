@@ -31,7 +31,7 @@ CREATE TABLE `tb_category` (
   `content` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `category_title_uindex` (`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `tb_category` (
 
 LOCK TABLES `tb_category` WRITE;
 /*!40000 ALTER TABLE `tb_category` DISABLE KEYS */;
-INSERT INTO `tb_category` VALUES (1,'手机','这里没有内容','2017-12-20 18:12:47','2017-12-20 18:12:50','wys这里没有简介'),(3,'电脑','电脑是你另外一个女朋友，一定要好好对待','2017-12-20 21:17:41','2017-12-20 21:17:41','jxy电脑是你另外一个女朋友');
+INSERT INTO `tb_category` VALUES (1,'手机','这里没有内容','2017-12-20 18:12:47','2017-12-20 18:12:50','wys这里没有简介'),(4,'书包','你的背包，背到现在还没烂','2017-12-25 11:38:16','2017-12-25 11:38:16','质量真好');
 /*!40000 ALTER TABLE `tb_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +70,7 @@ CREATE TABLE `tb_category_tag` (
 
 LOCK TABLES `tb_category_tag` WRITE;
 /*!40000 ALTER TABLE `tb_category_tag` DISABLE KEYS */;
-INSERT INTO `tb_category_tag` VALUES (1,'2017新款',1,'2017-12-20 13:22:13','2017-12-20 13:22:19'),(4,'双11促销',3,'2017-12-20 21:23:26','2017-12-20 21:23:26'),(5,'年中大促销',1,'2017-12-20 21:45:52','2017-12-20 21:45:52'),(6,'圣诞回馈-极限挑战',1,'2017-12-21 16:40:07','2017-12-21 16:40:07');
+INSERT INTO `tb_category_tag` VALUES (1,'2017新款',1,'2017-12-20 13:22:13','2017-12-20 13:22:19'),(5,'年中大促销',1,'2017-12-20 21:45:52','2017-12-20 21:45:52'),(6,'圣诞回馈-极限挑战',1,'2017-12-21 16:40:07','2017-12-21 16:40:07');
 /*!40000 ALTER TABLE `tb_category_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,12 +126,11 @@ CREATE TABLE `tb_product_comment` (
   `user_id` int(11) DEFAULT NULL,
   `comment_content` varchar(400) COLLATE utf8_unicode_ci NOT NULL,
   `comment_time` datetime DEFAULT NULL,
-  `repley_to` int(11) DEFAULT NULL,
+  `reply_to` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `tb_product_comment_tb_product_id_fk` (`product_id`),
   KEY `tb_product_comment_tb_user_id_fk` (`user_id`),
-  KEY `tb_product_comment_tb_product_comment_id_fk` (`repley_to`),
-  CONSTRAINT `tb_product_comment_tb_product_comment_id_fk` FOREIGN KEY (`repley_to`) REFERENCES `tb_product_comment` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  KEY `tb_product_comment_tb_product_comment_id_fk` (`reply_to`),
   CONSTRAINT `tb_product_comment_tb_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `tb_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_product_comment_tb_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `tb_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -143,6 +142,7 @@ CREATE TABLE `tb_product_comment` (
 
 LOCK TABLES `tb_product_comment` WRITE;
 /*!40000 ALTER TABLE `tb_product_comment` DISABLE KEYS */;
+INSERT INTO `tb_product_comment` VALUES (1,11,9529,'一加是一款很好用的手机，轻薄，拍照杠杠的','2017-12-25 14:50:44',NULL),(2,11,9529,'15天追评，基本上是一天一冲，或者两天一充','2017-12-25 14:52:14',1);
 /*!40000 ALTER TABLE `tb_product_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,6 +176,31 @@ INSERT INTO `tb_product_tag` VALUES (1,'贪玩蓝月-渣渣辉',11,'2017-12-21 1
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tb_role`
+--
+
+DROP TABLE IF EXISTS `tb_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tb_role_role_name_uindex` (`role_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_role`
+--
+
+LOCK TABLES `tb_role` WRITE;
+/*!40000 ALTER TABLE `tb_role` DISABLE KEYS */;
+INSERT INTO `tb_role` VALUES (2,'ADMIN'),(1,'USER');
+/*!40000 ALTER TABLE `tb_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_user`
 --
 
@@ -195,7 +220,7 @@ CREATE TABLE `tb_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `tb_user_username_uindex` (`username`),
   UNIQUE KEY `tb_user_email_uindex` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=9530 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9533 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,8 +229,37 @@ CREATE TABLE `tb_user` (
 
 LOCK TABLES `tb_user` WRITE;
 /*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
-INSERT INTO `tb_user` VALUES (9529,'tianyeling','nihaoma','nihao.jpg','tianyeling@163.com','13645857110',NULL,'2017-12-13 16:52:51','2017-12-13 15:49:22');
+INSERT INTO `tb_user` VALUES (9529,'tianyeling','XZxoxsUO09AqL89U9jmTtg==','nihao.jpg','tianyeling@163.com','13645857110',NULL,'2017-12-13 16:52:51','2017-12-13 15:49:22'),(9530,'rumusanfen','XZxoxsUO09AqL89U9jmTtg==','default.jpg','357536041@163.com','15158041141',NULL,'2017-12-26 11:24:57','2017-12-26 11:24:57');
 /*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_user_role`
+--
+
+DROP TABLE IF EXISTS `tb_user_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_user_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tb_user_role_tb_user_id_fk` (`user_id`),
+  KEY `tb_user_role_tb_role_id_fk` (`role_id`),
+  CONSTRAINT `tb_user_role_tb_role_id_fk` FOREIGN KEY (`role_id`) REFERENCES `tb_role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tb_user_role_tb_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `tb_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_user_role`
+--
+
+LOCK TABLES `tb_user_role` WRITE;
+/*!40000 ALTER TABLE `tb_user_role` DISABLE KEYS */;
+INSERT INTO `tb_user_role` VALUES (1,9529,1),(2,9529,2),(3,9530,1);
+/*!40000 ALTER TABLE `tb_user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -217,4 +271,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-21 21:11:43
+-- Dump completed on 2017-12-26 20:47:36
