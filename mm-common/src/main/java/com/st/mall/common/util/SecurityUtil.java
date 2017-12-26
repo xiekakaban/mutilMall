@@ -24,4 +24,8 @@ public class SecurityUtil {
             return str;
         }
     }
+
+    public static void main(String[] args){
+        System.out.println(SecurityUtil.eccryptMD5("nihaoma"));
+    }
 }

@@ -4,11 +4,18 @@ import com.st.mall.dao.base.IMapper;
 import com.st.mall.dao.customized.IUserMapper;
 import com.st.mall.common.util.SecurityUtil;
 import com.st.mall.model.entity.User;
+import com.st.mall.model.vo.UserWithGrantVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Sanmu.
@@ -16,7 +23,7 @@ import java.util.List;
  * @email 1215148017@qq.com
  */
 @Service
-public class UserService extends AbstractService<User> {
+public class UserService extends AbstractService<User>{
 
     @Autowired
     private IUserMapper mapper;
@@ -55,6 +62,11 @@ public class UserService extends AbstractService<User> {
         }
         record.setLastModifyTime(new Date());
         return super.updateByPrimaryKeySelective(record);
+    }
+
+    public UserWithGrantVO selectUserWithGrantByUsername(String username) throws UsernameNotFoundException {
+        UserWithGrantVO uWithGrant =  mapper.getUserWithGrantByUserName(username);
+        return uWithGrant;
     }
 
 }

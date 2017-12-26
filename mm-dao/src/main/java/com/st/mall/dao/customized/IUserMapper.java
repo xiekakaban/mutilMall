@@ -2,6 +2,7 @@ package com.st.mall.dao.customized;
 
 import com.st.mall.dao.base.IMapper;
 import com.st.mall.model.entity.User;
+import com.st.mall.model.vo.UserWithGrantVO;
 
 /**
  * @author Sanmu.
@@ -10,5 +11,6 @@ import com.st.mall.model.entity.User;
  */
 public interface IUserMapper extends IMapper<User> {
 
+    UserWithGrantVO getUserWithGrantByUserName(String username);
 
 }

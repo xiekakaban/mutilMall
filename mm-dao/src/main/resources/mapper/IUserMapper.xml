@@ -1,4 +1,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.st.mall.dao.customized.IUserMapper">
 
+    <select id="getUserWithGrantByUserName" resultMap="commonMapper.UserWithGrantVOMapper" parameterType="STRING">
+        select
+        u.pwd as u_pwd,
+        <include refid="commonMapper.userAS"></include>
+        ,
+        role.role_name as role_role_name
+      from tb_user u
+      LEFT JOIN tb_user_role urole on u.id = urole.user_id
+      left join tb_role role on urole.role_id = role.id where u.username=#{username}
+    </select>
 </mapper>

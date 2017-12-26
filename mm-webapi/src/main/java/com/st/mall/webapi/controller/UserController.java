@@ -5,6 +5,7 @@ import com.st.mall.service.UserService;
 import com.st.mall.webapi.entity.ResultBack;
 import com.st.mall.webapi.util.ResultBackUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,31 +31,37 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/",method=RequestMethod.POST)
+    @PreAuthorize("hasRole('ADMIN')")
     public ResultBack addUser(@RequestBody User user){
         userService.insert(user);
         return ResultBackUtil.success();
     }
 
     @RequestMapping(value = "/{userId}",method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('ADMIN')")
     public ResultBack deleteUser(@PathVariable("userId") Integer userId){
         userService.deleteByPrimaryKey(userId);
         return ResultBackUtil.success();
     }
 
     @RequestMapping(value="/",method = RequestMethod.PUT)
+    @PreAuthorize("hasRole('ADMIN')")
     public ResultBack UpdateUser(@RequestBody User user){
         userService.updateByPrimaryKeySelective(user);
         return ResultBackUtil.success();
     }
     @RequestMapping(value="/{userId}",method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ADMIN')")
     public ResultBack findOneUser(@PathVariable("userId") Integer userId){
         return ResultBackUtil.success(userService.selectUserByPrimaryKey(userId));
     }
     @RequestMapping(value="/",method = RequestMethod.GET)
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResultBack findAllUsers() {
         return ResultBackUtil.success(userService.selectAll());
     }
 
+    /***登陆界面*/
 
 
 //    @Autowired
@@ -117,7 +124,7 @@ public class UserController {
 //    }
 //
 //    @GetMapping("/logout")
-//    public ModelAndView adminLogout(HttpSession session){
+//    public ModelAndView ADMINLogout(HttpSession session){
 //        session.removeAttribute(Constants.SESS_USER);
 //        return new ModelAndView("redirect:/user/login/");
 //    }

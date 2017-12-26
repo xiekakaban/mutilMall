@@ -52,6 +52,11 @@
         <result column="p_last_modify_time" property="lastModifyTime" jdbcType="DATE"></result>
     </resultMap>
 
+    <resultMap id="UserWithGrantVOMapper" type="UserWithGrantVO" extends="userMapper">
+        <result column="u_pwd" property="pwd" jdbcType="VARCHAR"></result>
+        <collection property="roles" column="role_role_name" ofType="STRING" jdbcType="VARCHAR"></collection>
+    </resultMap>
+
     <resultMap id="CategoryDetailVOMapper" type="CategoryDetailVO" extends="CategoryMapper">
         <collection property="categoryTags" ofType="CategoryTag" resultMap="CategoryTagsMapper"></collection>
     </resultMap>
@@ -72,7 +77,7 @@
 
 
     <sql id="userAS">
-       u.id as u_id,
+        u.id as u_id,
         u.username as u_username,
         u.avatar as u_avatar,
         u.email as u_email,

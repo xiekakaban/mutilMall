@@ -16,6 +16,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -50,6 +51,12 @@ public class    Application extends WebMvcConfigurerAdapter implements CommandLi
         logger.info("ASDW");
     }
 
+//    @Override
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//        //添加静态controller
+//        registry.addViewController("/login").setViewName("/login");
+//    }
+
     @Bean
     public LocaleResolver localeResolver(){
         SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
@@ -69,6 +76,9 @@ public class    Application extends WebMvcConfigurerAdapter implements CommandLi
         registry.addInterceptor(localeChangeInterceptor());
     }
 
+
+
+    //jackson
     @Bean
     public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter(){
         final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
