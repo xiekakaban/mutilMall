@@ -25,10 +25,7 @@
             <groupId>com.st</groupId>
             <artifactId>mm-dao</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mustache</artifactId>
-        </dependency>
+
     </dependencies>
 
 
